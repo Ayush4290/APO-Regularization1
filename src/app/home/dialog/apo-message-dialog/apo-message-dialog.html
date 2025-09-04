@@ -1,0 +1,10 @@
+<div class="new-request-dialog">
+    <button *ngIf="data.isClose" mat-icon-button color="accent" class="circle-button mat-icon-button-close" (click)="onClick('close')">
+        <img src="\assets\images\close-icon.png">
+    </button>
+    <h1>{{data.title}}</h1>
+    <p>{{data.message}}</p>
+    <button mat-button class="popup-mat-button button-discard" (click)="onClick('no')"
+        style="width: 180px; margin-right: 10px;">{{data.leftbtntext}}</button>
+    <button mat-button class="popup-mat-button button-submit" (click)="onClick('yes')" style="width: 180px;">{{data.rightbtntext}}</button>
+</div>

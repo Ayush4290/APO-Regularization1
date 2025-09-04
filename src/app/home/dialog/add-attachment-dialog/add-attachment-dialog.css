@@ -1,0 +1,233 @@
+.add-attachment {
+    opacity: 1;
+    border-radius: 16px !important;
+}
+
+.add-attachment-top {
+    opacity: 1;
+    padding: 10px !important;
+    border-bottom-width: 1px !important;
+    background-color: #FFFFFF !important;
+    border-bottom: 1px solid #D1D5DB !important;
+    display: flex !important;
+}
+
+.add-attachment-title {
+    margin-top: 8px !important;
+    margin-left: 16px !important;
+    font-family: Roboto !important;
+    font-weight: 500 !important;
+    font-style: Medium !important;
+    font-size: 17px !important;
+    line-height: 28px !important;
+    letter-spacing: 0% !important;
+    color: #333333 !important;
+}
+
+.mat-icon-button-close {
+    margin-left: 305px !important;
+}
+
+.add-attachment-main {
+    opacity: 1px !important;
+    gap: 16px !important;
+    padding-top: 18px !important;
+    padding-right: 24px !important;
+    padding-bottom: 20px !important;
+    padding-left: 24px !important;
+    background-color: #FFFFFF;
+}
+
+.add-attachment-drop {
+    opacity: 1px !important;
+    border-radius: 8px !important;
+    border-width: 1.5px !important;
+    gap: 4px !important;
+    padding-top: 10px !important;
+    padding-right: 16px !important;
+    padding-bottom: 10px !important;
+    padding-left: 16px !important;
+    border: 2px dashed #DCDCDC !important;
+    display: grid;
+    text-align: center;
+}
+
+.add-attachment-drop-lable {
+    font-family: Roboto !important;
+    font-weight: 400 !important;
+    font-style: Regular !important;
+    font-size: 15px !important;
+    line-height: 22px !important;
+    letter-spacing: 0% !important;
+    color: #5C5C5C !important;
+}
+
+.add-attachment-drop-button {
+    width: 168px !important;
+    height: 36px !important;
+    opacity: 1px !important;
+    border-radius: 8px !important;
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+    background-color: #4F4F4F;
+    color: #FFFFFF;
+    left: 155px;
+}
+
+.add-attachment-message {
+    font-family: Roboto !important;
+    font-weight: 400 !important;
+    font-style: Regular !important;
+    font-size: 13px !important;
+    line-height: 18px !important;
+    letter-spacing: 0% !important;
+    vertical-align: middle !important;
+    color: #E22D20;
+    /* display: flex; */
+    justify-content: right;
+    align-items: right;
+    flex-wrap: wrap;
+    margin-left: 130px;
+}
+
+.add-attachment-error-message {
+    font-family: Roboto !important;
+    font-weight: 500 !important;
+    font-style: Medium !important;
+    font-size: 15px !important;
+    line-height: 22px !important;
+    letter-spacing: 0% !important;
+    vertical-align: middle !important;
+    color: #E22D20;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    flex-wrap: wrap;
+}
+
+.add-attachment-upload-message {
+    font-family: Roboto !important;
+    font-weight: 500 !important;
+    font-style: Medium !important;
+    font-size: 15px !important;
+    line-height: 22px !important;
+    letter-spacing: 0% !important;
+    vertical-align: middle !important;
+    color: #333333 !important;
+}
+
+.add-attachment-content {
+    opacity: 1px !important;
+    border-radius: 8px !important;
+    border-width: 1px !important;
+    gap: 9px !important;
+    padding-top: 20px !important;
+    padding-right: 16px !important;
+    padding-bottom: 20px !important;
+    padding-left: 16px !important;
+    background-color: #F6F6F6 !important;
+    border: 1px solid #DCDCDC !important;
+    margin-top: 15px;
+}
+
+.add-attachment-content-lable {
+    font-family: Roboto !important;
+    font-weight: 400 !important;
+    font-style: Regular !important;
+    font-size: 13px !important;
+    line-height: 22px !important;
+    letter-spacing: 0% !important;
+    text-align: right !important;
+    color: #4B5563 !important;
+}
+
+.add-attachment-icon {
+    width: 92px !important;
+    height: 82px !important;
+    opacity: 1 !important;
+    border-radius: 8px !important;
+    border-width: 1.5px !important;
+    background-color: #FFFFFF !important;
+    border: 1.5px solid #DCDCDC !important;
+}
+
+.add-attachment-show-name {
+    display: grid;
+    margin-top: -88px;
+    margin-left: 105px;
+}
+
+.add-attachment-file-name {
+    font-family: Roboto !important;
+    font-weight: 500 !important;
+    font-style: Medium !important;
+    font-size: 13px !important;
+    line-height: 22px !important;
+    letter-spacing: 0% !important;
+    color: #333333;
+}
+
+.add-attachment-file-size {
+    font-family: Roboto !important;
+    font-weight: 400 !important;
+    font-style: Regular !important;
+    font-size: 15px !important;
+    line-height: 22px !important;
+    letter-spacing: 0% !important;
+    color: #5C5C5C !important;
+}
+
+.add-attachment-file-delete-button {
+    width: 88px !important;
+    height: 36px !important;
+    opacity: 1 !important;
+    border-radius: 8px !important;
+    border-width: 1px !important;
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+    color: #333333;
+    background-color: #FFFFFF !important;
+    border: 1px solid #DCDCDC !important;
+}
+
+.add-attachment-bottom {
+    opacity: 1 !important;
+    padding-top: 14px !important;
+    padding-right: 16px !important;
+    padding-bottom: 14px !important;
+    border-top-width: 1px !important;
+    background-color: #FFFFFF !important;
+    border-top: 1px solid #E2E4E9 !important;
+    display: flex;
+    justify-content: right;
+    gap: 12px;
+    align-items: right;
+    flex-wrap: wrap;
+}
+
+.add-attachment-discard-button {
+    width: 168px !important;
+    height: 36px !important;
+    opacity: 1 !important;
+    border-radius: 8px !important;
+    border-width: 1px !important;
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+    color: #333333;
+    background-color: #FFFFFF !important;
+    border: 1px solid #DCDCDC !important;
+    gap: 10px !important;
+}
+
+.add-attachment-save-button {
+    width: 168px !important;
+    height: 36px !important;
+    opacity: 1 !important;
+    border-radius: 8px !important;
+    border-width: 1px !important;
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+    color: #FFFFFF !important;
+    background-color: #EA781A !important;
+    gap: 10px !important;
+}

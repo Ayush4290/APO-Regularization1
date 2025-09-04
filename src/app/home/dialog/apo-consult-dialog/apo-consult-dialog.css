@@ -1,0 +1,92 @@
+.consult-attachment {
+    opacity: 1;
+    border-radius: 16px !important;
+}
+
+.consult-attachment-top {
+    opacity: 1;
+    padding: 10px !important;
+    border-bottom-width: 1px !important;
+    background-color: #FFFFFF !important;
+    border-bottom: 1px solid #D1D5DB !important;
+    display: flex !important;
+}
+
+.consult-attachment-title {
+    margin-top: 8px !important;
+    margin-left: 16px !important;
+    font-family: Roboto !important;
+    font-weight: 500 !important;
+    font-style: Medium !important;
+    font-size: 17px !important;
+    line-height: 28px !important;
+    letter-spacing: 0% !important;
+    color: #333333 !important;
+
+    display: flex !important;
+    justify-content: left;
+    gap: 12px;
+    align-items: left;
+    flex-wrap: wrap;
+}
+
+.mat-icon-button-close {
+    display: flex !important;
+    justify-content: right;
+    gap: 12px;
+    align-items: right;
+    flex-wrap: wrap;
+}
+
+.consult-attachment-main {
+    opacity: 1px !important;
+    gap: 16px !important;
+    padding-top: 24px !important;
+    padding-right: 24px !important;
+    padding-bottom: 56px !important;
+    padding-left: 24px !important;
+    background-color: #FFFFFF;
+}
+
+.consult-attachment-type-title {
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: 0%;
+    text-align: right;
+    color: #333333 !important;
+}
+
+.consult-attachment-content {
+    opacity: 1;
+    margin-top: 10px !important;
+}
+
+.consult-attachment-bottom {
+    opacity: 1 !important;
+    padding-top: 14px !important;
+    padding-right: 16px !important;
+    padding-bottom: 14px !important;
+    border-top-width: 1px !important;
+    background-color: #FFFFFF !important;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    align-items: right;
+    flex-wrap: wrap;
+}
+
+.consult-attachment-save-button {
+    width: 168px !important;
+    height: 36px !important;
+    opacity: 1 !important;
+    border-radius: 8px !important;
+    border-width: 1px !important;
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+    color: #FFFFFF !important;
+    background-color: #EA781A !important;
+    gap: 10px !important;
+}

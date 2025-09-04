@@ -1,0 +1,105 @@
+
+.login-body{
+    height: 100vh;
+    background: linear-gradient(135deg, #ff6a0000, #ffb347, #ff000000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Card */
+.login-card {
+
+  padding: 25px;
+  border-radius: 15px;
+       max-width: 380px;
+       margin:  auto;
+  width: 90%;
+  background: #fff;
+  box-shadow: 0px 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Header */
+.login-header {
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.login-title {
+
+    font-size: 27px;
+    font-weight: 600;
+    color: #ff6a00;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Form fields */
+.login-field {
+width: 100%;
+    margin-bottom: 15px;
+    background:transparent;
+    border-radius: 8px;
+    border: none;
+}
+
+mat-label {
+  font-weight: 500;
+  color: #444 !important;
+}
+
+/* Actions */
+.login-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Buttons */
+.btn-login {
+  padding: 8px 30px;
+  font-weight: 500;
+  border-radius: 25px;
+  background: linear-gradient(45deg, #ff6a00, #ffb347);
+  color: #fff !important;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+}
+.mdc-text-field--filled
+ {
+    background-color: transparent !important;
+    border: 1px solid #80808040;
+    outline: none !important;
+    border-radius: 3px !important;
+}
+
+
+.btn-login:hover {
+  opacity: 0.95;
+}
+
+.btn-forgot {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: none;
+  color: #ff6a00 !important;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 15px;
+  }
+
+  .login-title {
+    font-size: 1.4rem;
+  }
+
+  .login-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-login, .btn-forgot {
+    width: 100%;
+    text-align: center;
+  }
+}

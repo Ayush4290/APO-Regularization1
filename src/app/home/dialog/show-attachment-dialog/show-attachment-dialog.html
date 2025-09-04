@@ -1,0 +1,37 @@
+<div class="show-attachment">
+    <div class="show-attachment-top">
+        <label class="show-attachment-title">Attachment</label>
+        <button mat-icon-button color="accent" class="circle-button mat-icon-button-close" (click)="onCancelClick()">
+            <img src="\assets\images\close-icon.png">
+        </button>
+    </div>
+    <div *ngIf="this.data.userId!=0" mat-dialog-content class="show-attachment-main">
+        <label class="show-attachment-type-title">{{title}}</label>
+        <div class="show-attachment-content" *ngFor="let file of files; let i = index">
+            <div class="main-layout-flex">
+                <div class="main-layout-flex">
+                    <span class="show-attachment-name">{{file.fileName}}</span>
+                </div>
+                <div class="main-layout-flex" style="margin-left: 150px;">
+                    <span class="show-attachment-date">
+                        {{this.datePipe.transform(file.createdDt,dtconstant.dtFormat)}}
+                    </span>
+                    <img src="\assets\images\open-attachment.png"
+                        (click)="openFileInNewTab(file.fileContent, file.fileType)" style="cursor: pointer;">
+                    <img src="\assets\images\download-attachment.png"
+                        (click)="downloadFiles(file.fileContent, file.fileType, file.fileName)"
+                        style="cursor: pointer;">
+                    <img src="\assets\images\delete-attachment.png" (click)="deleteAttach(file.fileId)"
+                        style="cursor: pointer;">
+                </div>
+            </div>
+            <span class="show-attachment-description">{{file.fileDesc}}</span>
+        </div>
+    </div>
+    <div *ngIf="this.data.userId==0" class="show-attachment-layout">
+        <img *ngIf="this.data.type=='img'" [src]="this.data.files" alt="Viewer" style="height: 500px;width: 500px;" />
+        <ngx-extended-pdf-viewer *ngIf="this.data.type=='pdf'"  [height]="'80vh'" (pdfLoaded)="onPdfLoaded()" [src]="this.data.files"
+           (error)="onError($event)">
+        </ngx-extended-pdf-viewer>
+    </div>
+</div>

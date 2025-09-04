@@ -1,0 +1,190 @@
+<div class="main-layout-flex">
+    <div class="main-layout-flex audit">
+        <app-apo-history-attachments [auditHistory]='auditHistory'
+            style="width: 100% !important;"></app-apo-history-attachments>
+    </div>
+    <div class="main-layout-flex pending">
+        <form class="form-group" [formGroup]="apoForm">
+            <span class="new-request-header-title">Details of Personnel</span>
+            <div class="form-row">
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Personnel ID</label>
+                    <mat-form-field appearance="outline" class="example-full-width ">
+                        <input matInput class="mat-input-text-font background-color" id="personnelId"
+                            formControlName="personnelId" [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Personnel Name</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input matInput class="mat-input-text-font background-color" id="personnelName"
+                            formControlName="personnelName" [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Name of Department</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input matInput class="background-color" id="department" formControlName="department"
+                            [readonly]="true">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Name of Service</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input matInput class="mat-input-text-font background-color" id="nameOfService"
+                            formControlName="nameOfService" [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                </div>
+                <div class="form-row-field">
+                </div>
+            </div>
+            <div class="dotted-line"></div>
+            <span class="new-request-header-title">Post & Department Details</span>
+            <div class="form-row">
+                <div class="form-row-field">
+                    <label class="mat-lable-text">APO Order Number</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input matInput id="apoOrderNumber" class="mat-input-text-font" formControlName="apoOrderNumber"
+                            [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">APO Order Date</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="apoOrderDate" matInput class="mat-input-text-font" formControlName="apoOrderDate"
+                            [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">APO Date</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="apoDate" matInput class="mat-input-text-font" formControlName="apoDate"
+                            [readonly]="true">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Posting Order Number</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="postingOrderNumber" matInput class="mat-input-text-font"
+                            formControlName="postingOrderNumber" [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Posting Order Date</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="postingOrderDate" matInput class="mat-input-text-font"
+                            formControlName="postingOrderDate" [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Joining Date</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="joiningDate" matInput class="mat-input-text-font" formControlName="joiningDate"
+                            [readonly]="true">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Previous Post</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="previousPost" matInput class="mat-input-text-font" formControlName="previousPost"
+                            [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">New Post</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="newPost" matInput class="mat-input-text-font" formControlName="newPost"
+                            [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">APO Duration (Days)</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input type="number" id="apoDuration" class="mat-input-text-font" matInput
+                            formControlName="apoDuration" [readonly]="true">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-row-field">
+                    <label class="mat-lable-text">APO Headquarters</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="apoHeadquarters" matInput class="mat-input-text-font"
+                            formControlName="apoHeadquarters" [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field"></div>
+                <div class="form-row-field"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-row-field">
+                    <label class="mat-lable-text">APO Reason Details</label>
+                    <mat-form-field appearance="outline" class="example-full-width" id="textAreaMain">
+                        <textarea id="apoReasonDetails" class="mat-input-text-font" matInput
+                            formControlName="apoReasonDetails" [readonly]="true"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+
+        <div class="table-container" *ngIf="this.consultList.length>0">
+            <table mat-table [dataSource]="dataSource">
+                <ng-container matColumnDef="#">
+                    <th mat-header-cell *matHeaderCellDef class="text-align-center">#</th>
+                    <td mat-cell *matCellDef="let row; let i = index;">
+                        {{ i + 1 }}
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="deptName">
+                    <th mat-header-cell *matHeaderCellDef class="text-align-center">
+                        <span class="header-content">
+                            Department
+                        </span>
+                    </th>
+                    <td mat-cell *matCellDef="let row">{{row.deptName}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="reasonName">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <span class="header-content">
+                            Reason for Consultation
+                        </span>
+                    </th>
+                    <td mat-cell *matCellDef="let row">{{row.reasonName}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="createdDt">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <span class="header-content">
+                            Date Submitted (Aging)
+                        </span>
+                    </th>
+                    <td mat-cell *matCellDef="let row">{{row.createdDt}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef class="text-align-center">
+                        <span class="header-content">
+                            Status
+                        </span>
+                    </th>
+                    <td mat-cell *matCellDef="let row" class="text-align-center">
+                        <button mat-button class="status-button" [ngClass]="getStatusClass(row.statusId)">
+                            <img src="\assets\images\{{row.statusName|lowercase}}-icon.png">
+                            {{ row.statusName | titlecase}}
+                        </button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </div>

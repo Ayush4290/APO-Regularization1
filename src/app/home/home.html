@@ -1,0 +1,56 @@
+<div class="home-container">
+  <mat-toolbar class="home-navigation-bar">
+    <img src="\assets\images\menu.png" />
+    APO Regularisation
+
+    <div class="search-container search-head">
+      <!-- <mat-form-field appearance="outline">
+        <mat-icon matPrefix style="margin-bottom: 14px;">search</mat-icon>
+        <input matInput placeholder="Search.." />
+      </mat-form-field> -->
+    </div>
+
+    <!-- Notification Icon -->
+    <div class="notification" (click)="toggleNotifications()">
+      <i class="bi bi-bell-fill"></i>
+      <sup>0</sup>
+    </div>
+
+    <!-- Notification Dropdown -->
+    <div class="notification-toolbar" *ngIf="showNotifications">
+      <h4>Notifications</h4>
+      <ul>
+        <li>No new notifications</li>
+      </ul>
+    </div>
+
+    <!-- Profile Dropdown -->
+    <div class="profile-dropdown">
+      <!-- Profile Header -->
+      <div class="profile-header">
+        <div class="avatar">
+          <i class="bi bi-person-circle"></i>
+        </div>
+        <span class="name">{{ this.name }}</span>
+        <div class="dropdown-icon">
+          <i class="bi bi-chevron-down"></i>
+        </div>
+      </div>
+
+      <!-- Dropdown Menu -->
+      <div class="dropdown-menu">
+        <div class="dropdown-item" (click)="logout()">
+          <i class="bi bi-box-arrow-right"></i>
+          <span>Logout</span>
+        </div>
+      </div>
+    </div>
+  </mat-toolbar>
+
+  <div class="home-container-layout">
+    <div class="home-apo-number">
+      <app-show-apo-order-number></app-show-apo-order-number>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
