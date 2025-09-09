@@ -15,9 +15,27 @@
                     <div class="form-row-field">
                         <label class="mat-lable-text">Department<span class="required-star">*</span></label>
                         <mat-form-field appearance="outline" class="example-full-width" id="popupInput">
-                            <mat-select id="department" formControlName="department" placeholder="Select Department">
-                                <mat-option *ngFor="let dept of consult.value.deptList" [value]="dept.deptId">
+                            <mat-select id="department" formControlName="department" placeholder="Select Department"
+                                        (closed)="onDeptClosed(i)">
+                                <!-- Search container inside dropdown, at top -->
+     <div class="search-container">
+  <mat-icon class="filter-icon">tune</mat-icon>
+  <input class="dropdown-search-input" matInput type="text" 
+         placeholder="Search Department..." 
+         [value]="deptSearchTexts[i]"
+         (input)="updateDeptSearch(i, $event); $event.stopPropagation();">
+  <mat-icon class="search-icon">search</mat-icon>
+</div>
+
+
+
+                                <!-- Filtered options -->
+                                <mat-option *ngFor="let dept of filterDepts(deptSearchTexts[i], deptList)" [value]="dept.deptId">
                                     {{ dept.deptName }}
+                                </mat-option>
+                                <!-- No results message -->
+                                <mat-option *ngIf="filterDepts(deptSearchTexts[i], deptList).length === 0" disabled>
+                                    No departments found
                                 </mat-option>
                             </mat-select>
                             <mat-error *ngIf="consult.get('department')?.invalid && consult.get('department')?.touched">
@@ -26,12 +44,28 @@
                         </mat-form-field>
                     </div>
                     <div class="form-row-field">
-                        <label class="mat-lable-text">Reason for Consultation<span
-                                class="required-star">*</span></label>
+                        <label class="mat-lable-text">Reason for Consultation<span class="required-star">*</span></label>
                         <mat-form-field appearance="outline" class="example-full-width" id="popupInput">
-                            <mat-select id="reason" formControlName="reason" placeholder="Select Reason" multiple>
-                                <mat-option *ngFor="let r of reasons" [value]="r.reasonId">
+                            <mat-select id="reason" formControlName="reason" placeholder="Select Reason" multiple
+                                        (closed)="onReasonClosed(i)">
+                                <!-- Search container inside dropdown, at top -->
+<div class="search-container">
+  <mat-icon class="filter-icon">tune</mat-icon>
+  <input class="dropdown-search-input" matInput type="text" 
+         placeholder="Search Department..." 
+         [value]="deptSearchTexts[i]"
+         (input)="updateDeptSearch(i, $event); $event.stopPropagation();">
+  <mat-icon class="search-icon">search</mat-icon>
+</div>
+
+
+                                <!-- Filtered options -->
+                                <mat-option *ngFor="let r of filterReasons(reasonSearchTexts[i])" [value]="r.reasonId">
                                     {{ r.reasonName }}
+                                </mat-option>
+                                <!-- No results message -->
+                                <mat-option *ngIf="filterReasons(reasonSearchTexts[i]).length === 0" disabled>
+                                    No reasons found
                                 </mat-option>
                             </mat-select>
                             <mat-error *ngIf="consult.get('reason')?.invalid && consult.get('reason')?.touched">

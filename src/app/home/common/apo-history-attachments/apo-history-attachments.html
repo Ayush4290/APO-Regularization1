@@ -1,28 +1,50 @@
 <mat-tab-group>
   <!-- History Tab -->
   <mat-tab label="History" class="audit-tab-mat-button">
-    <div class="main-layout-flex audit-history-attachment-button-layout" style="position: relative;">
-      <button mat-button class="audit-history-attachment-button" [class.active]="activeFilter === 'All'"
-        (click)="onFilterButtonClick('All')">
+    <div
+      class="main-layout-flex audit-history-attachment-button-layout"
+      style="position: relative"
+    >
+      <button
+        mat-button
+        class="audit-history-attachment-button"
+        [class.active]="activeFilter === 'All'"
+        (click)="onFilterButtonClick('All')"
+      >
         <mat-icon>list</mat-icon>
         All
       </button>
 
-      <button mat-button class="audit-history-attachment-button" [class.active]="activeFilter === 'Department'"
-        (click)="onFilterButtonClick('Department')">
+      <button
+        mat-button
+        class="audit-history-attachment-button"
+        [class.active]="activeFilter === 'Department'"
+        (click)="onFilterButtonClick('Department')"
+      >
         <mat-icon>apartment</mat-icon>
         Department
       </button>
 
       <!-- Department Dropdown -->
-      <div *ngIf="showDepartmentDropdown" class="department-dropdown" (click)="$event.stopPropagation()">
+      <div
+        *ngIf="showDepartmentDropdown"
+        class="department-dropdown"
+        (click)="$event.stopPropagation()"
+      >
         <!-- Search Box -->
         <div class="dropdown-search">
           <div class="search-input-wrapper">
             <mat-icon class="search-icon">search</mat-icon>
-            <input type="text" class="search-input" [(ngModel)]="searchText" (input)="onSearch()"
-              placeholder="Search...">
-            <mat-icon class="filter-icon" (click)="toggleSortDropdown($event)">tune</mat-icon>
+            <input
+              type="text"
+              class="search-input"
+              [(ngModel)]="searchText"
+              (input)="onSearch()"
+              placeholder="Search..."
+            />
+            <mat-icon class="filter-icon" (click)="toggleSortDropdown($event)"
+              >tune</mat-icon
+            >
           </div>
         </div>
 
@@ -31,13 +53,25 @@
           <div class="sort-title">Sort By:</div>
           <div class="sort-options">
             <label class="sort-radio-option">
-              <input type="radio" name="sortOrder" value="asc" [(ngModel)]="sortOrder" (change)="onSortChange('asc')"
-                class="sort-radio">
+              <input
+                type="radio"
+                name="sortOrder"
+                value="asc"
+                [(ngModel)]="sortOrder"
+                (change)="onSortChange('asc')"
+                class="sort-radio"
+              />
               <span class="sort-radio-label">Ascending order (A to Z)</span>
             </label>
             <label class="sort-radio-option">
-              <input type="radio" name="sortOrder" value="desc" [(ngModel)]="sortOrder" (change)="onSortChange('desc')"
-                class="sort-radio">
+              <input
+                type="radio"
+                name="sortOrder"
+                value="desc"
+                [(ngModel)]="sortOrder"
+                (change)="onSortChange('desc')"
+                class="sort-radio"
+              />
               <span class="sort-radio-label">Descending order (Z to A)</span>
             </label>
           </div>
@@ -47,29 +81,48 @@
         <div class="department-list">
           <div *ngFor="let dept of deptHistoryList" class="department-item">
             <label class="department-checkbox-wrapper">
-              <input type="checkbox" [(ngModel)]="dept.checked" (click)="onDepartmentChange(dept)"
-                class="department-checkbox">
-              <span class="department-checkbox-label">{{dept.deptName}}</span>
+              <input
+                type="checkbox"
+                [(ngModel)]="dept.checked"
+                (click)="onDepartmentChange(dept)"
+                class="department-checkbox"
+              />
+              <span class="department-checkbox-label">{{ dept.deptName }}</span>
             </label>
           </div>
         </div>
       </div>
 
-      <button mat-button class="audit-history-attachment-button" [class.active]="activeFilter === 'User'"
-        (click)="onFilterButtonClick('User')">
+      <button
+        mat-button
+        class="audit-history-attachment-button"
+        [class.active]="activeFilter === 'User'"
+        (click)="onFilterButtonClick('User')"
+      >
         <mat-icon>person</mat-icon>
         User
       </button>
 
       <!-- User Dropdown -->
-      <div *ngIf="showUserDropdown" class="user-dropdown" (click)="$event.stopPropagation()">
+      <div
+        *ngIf="showUserDropdown"
+        class="user-dropdown"
+        (click)="$event.stopPropagation()"
+      >
         <!-- Search Box -->
         <div class="dropdown-search">
           <div class="search-input-wrapper">
             <mat-icon class="search-icon">search</mat-icon>
-            <input type="text" class="search-input" [(ngModel)]="userSearchText" (input)="onUserSearch()"
-              placeholder="Search users...">
-            <mat-icon class="filter-icon" (click)="toggleSortDropdown($event)">tune</mat-icon>
+            <input
+              type="text"
+              class="search-input"
+              [(ngModel)]="userSearchText"
+              (input)="onUserSearch()"
+              placeholder="Search users..."
+            />
+            <mat-icon class="filter-icon" (click)="toggleSortDropdown($event)"
+              >tune</mat-icon
+            >
           </div>
         </div>
 
@@ -78,13 +131,25 @@
           <div class="sort-title">Sort By:</div>
           <div class="sort-options">
             <label class="sort-radio-option">
-              <input type="radio" name="sortOrder" value="asc" [(ngModel)]="sortOrder" (change)="onSortChange('asc')"
-                class="sort-radio">
+              <input
+                type="radio"
+                name="sortOrder"
+                value="asc"
+                [(ngModel)]="sortOrder"
+                (change)="onSortChange('asc')"
+                class="sort-radio"
+              />
               <span class="sort-radio-label">Ascending order (A to Z)</span>
             </label>
             <label class="sort-radio-option">
-              <input type="radio" name="sortOrder" value="desc" [(ngModel)]="sortOrder" (change)="onSortChange('desc')"
-                class="sort-radio">
+              <input
+                type="radio"
+                name="sortOrder"
+                value="desc"
+                [(ngModel)]="sortOrder"
+                (change)="onSortChange('desc')"
+                class="sort-radio"
+              />
               <span class="sort-radio-label">Descending order (Z to A)</span>
             </label>
           </div>
@@ -94,8 +159,13 @@
         <div class="user-list">
           <div *ngFor="let user of userHistoryList" class="user-item">
             <label class="user-checkbox-wrapper">
-              <input type="checkbox" [(ngModel)]="user.checked" (click)="onUserChange(user)" class="user-checkbox">
-              <span class="user-checkbox-label">{{user.empName}}</span>
+              <input
+                type="checkbox"
+                [(ngModel)]="user.checked"
+                (click)="onUserChange(user)"
+                class="user-checkbox"
+              />
+              <span class="user-checkbox-label">{{ user.empName }}</span>
             </label>
           </div>
         </div>
@@ -103,35 +173,59 @@
     </div>
 
     <!-- Backdrop to close dropdown -->
-    <div *ngIf="showDepartmentDropdown || showUserDropdown" class="dropdown-backdrop" (click)="closeDropdown()"></div>
-    <div *ngIf="showSortDropdown" class="dropdown-backdrop" (click)="showSortDropdown = false"></div>
+    <div
+      *ngIf="showDepartmentDropdown || showUserDropdown"
+      class="dropdown-backdrop"
+      (click)="closeDropdown()"
+    ></div>
+    <div
+      *ngIf="showSortDropdown"
+      class="dropdown-backdrop"
+      (click)="showSortDropdown = false"
+    ></div>
 
     <div mat-dialog-content>
       <div *ngFor="let hist of auditHistoryList">
         <div class="audit-attachment-content">
           <div class="main-layout-flex">
             <div class="main-layout-flex">
-              <span class="audit-history-name">{{hist?.empName}}</span>
-              <button mat-button class="status-button" [ngClass]="getStatusClass(hist?.status)">
-                <img src="/assets/images/{{hist?.statusName | lowercase}}-icon.png">
-                {{ hist?.statusName | titlecase}}
+              <span class="audit-history-name">{{ hist?.empName }}</span>
+              <button
+                mat-button
+                class="status-button"
+                [ngClass]="getStatusClass(hist?.status)"
+              >
+                <img
+                  src="/assets/images/{{
+                    hist?.statusName | lowercase
+                  }}-icon.png"
+                />
+                {{ hist?.statusName | titlecase }}
               </button>
             </div>
           </div>
           <div class="main-layout-grid">
             <span class="audit-history-department">
-              Department: {{hist?.dept}}
-              <span class="audit-history-department" [ngClass]="hist?.role | lowercase">{{hist?.role}}</span>
+              Department: {{ hist?.dept }}
+              <span
+                class="audit-history-department"
+                [ngClass]="hist?.role | lowercase"
+                >{{ hist?.role }}</span
+              >
             </span>
             <div class="main-layout-flex audit-history-datetime">
-              {{ hist?.date +' / '+ hist?.time }} {{hist?.aging!=null ? '('+ hist?.aging+' Days)' : ''}}
-              <button *ngIf="hist.fileIds?.length>0" mat-button
-                (click)="showAttachmentDialog(hist?.fileIds,hist?.empId)"
-                class="attachment-view-button-for-history button-discard">
-                <mat-icon>file_copy</mat-icon> ({{hist.fileIds?.length}})
+              {{ hist?.date + " / " + hist?.time }}
+              {{ hist?.aging != null ? "(" + hist?.aging + " Days)" : "" }}
+              <button
+                *ngIf="hist.fileIds?.length > 0"
+                mat-button
+                (click)="showAttachmentDialog(hist?.fileIds, hist?.empId)"
+                class="attachment-view-button-for-history button-discard"
+              >
+                <mat-icon>file_copy</mat-icon> ({{ hist.fileIds?.length }})
               </button>
             </div>
-            <label class="audit-history-description">{{hist?.comment}}</label>
+            <label class="audit-history-description">{{ hist?.comment }}</label>
           </div>
         </div>
       </div>
@@ -140,31 +234,52 @@
 
   <!-- Attachment Tab -->
   <mat-tab label="Attachment" class="audit-tab-mat-button">
-    <div class="main-layout-flex audit-history-attachment-button-layout" style="position: relative;">
-      <button mat-button class="audit-history-attachment-button" [class.active]="activeFilter === 'All'"
-        (click)="onFilterButtonClick('All')">
+    <div
+      class="main-layout-flex audit-history-attachment-button-layout"
+      style="position: relative"
+    >
+      <button
+        mat-button
+        class="audit-history-attachment-button"
+        [class.active]="activeFilter === 'All'"
+        (click)="onFilterButtonClick('All')"
+      >
         <mat-icon>list</mat-icon>
-
 
         All
       </button>
 
-      <button mat-button class="audit-history-attachment-button" [class.active]="activeFilter === 'Department'"
-        (click)="onFilterButtonClick('Department')">
+      <button
+        mat-button
+        class="audit-history-attachment-button"
+        [class.active]="activeFilter === 'Department'"
+        (click)="onFilterButtonClick('Department')"
+      >
         <mat-icon>apartment</mat-icon>
 
         Department
       </button>
 
       <!-- Department Dropdown for Attachments Tab -->
-      <div *ngIf="showDepartmentDropdown" class="department-dropdown" (click)="$event.stopPropagation()">
+      <div
+        *ngIf="showDepartmentDropdown"
+        class="department-dropdown"
+        (click)="$event.stopPropagation()"
+      >
         <!-- Search Box -->
         <div class="dropdown-search">
           <div class="search-input-wrapper">
             <mat-icon class="search-icon">search</mat-icon>
-            <input type="text" class="search-input" [(ngModel)]="searchText" (input)="onSearch()"
-              placeholder="Search...">
-            <mat-icon class="filter-icon" (click)="toggleSortDropdown($event)">tune</mat-icon>
+            <input
+              type="text"
+              class="search-input"
+              [(ngModel)]="searchText"
+              (input)="onSearch()"
+              placeholder="Search..."
+            />
+            <mat-icon class="filter-icon" (click)="toggleSortDropdown($event)"
+              >tune</mat-icon
+            >
           </div>
         </div>
 
@@ -173,13 +288,25 @@
           <div class="sort-title">Sort By:</div>
           <div class="sort-options">
             <label class="sort-radio-option">
-              <input type="radio" name="sortOrder" value="asc" [(ngModel)]="sortOrder" (change)="onSortChange('asc')"
-                class="sort-radio">
+              <input
+                type="radio"
+                name="sortOrder"
+                value="asc"
+                [(ngModel)]="sortOrder"
+                (change)="onSortChange('asc')"
+                class="sort-radio"
+              />
               <span class="sort-radio-label">Ascending order (A to Z)</span>
             </label>
             <label class="sort-radio-option">
-              <input type="radio" name="sortOrder" value="desc" [(ngModel)]="sortOrder" (change)="onSortChange('desc')"
-                class="sort-radio">
+              <input
+                type="radio"
+                name="sortOrder"
+                value="desc"
+                [(ngModel)]="sortOrder"
+                (change)="onSortChange('desc')"
+                class="sort-radio"
+              />
               <span class="sort-radio-label">Descending order (Z to A)</span>
             </label>
           </div>
@@ -189,30 +316,49 @@
         <div class="department-list">
           <div *ngFor="let dept of deptAttachmentList" class="department-item">
             <label class="department-checkbox-wrapper">
-              <input type="checkbox" [(ngModel)]="dept.checked" (click)="onDepartmentChange(dept)"
-                class="department-checkbox">
-              <span class="department-checkbox-label">{{dept.deptName}}</span>
+              <input
+                type="checkbox"
+                [(ngModel)]="dept.checked"
+                (click)="onDepartmentChange(dept)"
+                class="department-checkbox"
+              />
+              <span class="department-checkbox-label">{{ dept.deptName }}</span>
             </label>
           </div>
         </div>
       </div>
 
-      <button mat-button class="audit-history-attachment-button" [class.active]="activeFilter === 'User'"
-        (click)="onFilterButtonClick('User')">
+      <button
+        mat-button
+        class="audit-history-attachment-button"
+        [class.active]="activeFilter === 'User'"
+        (click)="onFilterButtonClick('User')"
+      >
         <mat-icon>person</mat-icon>
 
         User
       </button>
 
       <!-- User Dropdown for Attachments Tab -->
-      <div *ngIf="showUserDropdown" class="user-dropdown" (click)="$event.stopPropagation()">
+      <div
+        *ngIf="showUserDropdown"
+        class="user-dropdown"
+        (click)="$event.stopPropagation()"
+      >
         <!-- Search Box -->
         <div class="dropdown-search">
           <div class="search-input-wrapper">
             <mat-icon class="search-icon">search</mat-icon>
-            <input type="text" class="search-input" [(ngModel)]="userSearchText" (input)="onUserSearch()"
-              placeholder="Search users...">
-            <mat-icon class="filter-icon" (click)="toggleSortDropdown($event)">tune</mat-icon>
+            <input
+              type="text"
+              class="search-input"
+              [(ngModel)]="userSearchText"
+              (input)="onUserSearch()"
+              placeholder="Search users..."
+            />
+            <mat-icon class="filter-icon" (click)="toggleSortDropdown($event)"
+              >tune</mat-icon
+            >
           </div>
         </div>
 
@@ -221,13 +367,25 @@
           <div class="sort-title">Sort By:</div>
           <div class="sort-options">
             <label class="sort-radio-option">
-              <input type="radio" name="sortOrder" value="asc" [(ngModel)]="sortOrder" (change)="onSortChange('asc')"
-                class="sort-radio">
+              <input
+                type="radio"
+                name="sortOrder"
+                value="asc"
+                [(ngModel)]="sortOrder"
+                (change)="onSortChange('asc')"
+                class="sort-radio"
+              />
               <span class="sort-radio-label">Ascending order (A to Z)</span>
             </label>
             <label class="sort-radio-option">
-              <input type="radio" name="sortOrder" value="desc" [(ngModel)]="sortOrder" (change)="onSortChange('desc')"
-                class="sort-radio">
+              <input
+                type="radio"
+                name="sortOrder"
+                value="desc"
+                [(ngModel)]="sortOrder"
+                (change)="onSortChange('desc')"
+                class="sort-radio"
+              />
               <span class="sort-radio-label">Descending order (Z to A)</span>
             </label>
           </div>
@@ -237,8 +395,13 @@
         <div class="user-list">
           <div *ngFor="let user of userAttachmentList" class="user-item">
             <label class="user-checkbox-wrapper">
-              <input type="checkbox" [(ngModel)]="user.checked" (click)="onUserChange(user)" class="user-checkbox">
-              <span class="user-checkbox-label">{{user.empName}}</span>
+              <input
+                type="checkbox"
+                [(ngModel)]="user.checked"
+                (click)="onUserChange(user)"
+                class="user-checkbox"
+              />
+              <span class="user-checkbox-label">{{ user.empName }}</span>
             </label>
           </div>
         </div>
@@ -246,62 +409,134 @@
     </div>
 
     <!-- Backdrop to close dropdown -->
-    <div *ngIf="showDepartmentDropdown || showUserDropdown" class="dropdown-backdrop" (click)="closeDropdown()"></div>
-    <div *ngIf="showSortDropdown" class="dropdown-backdrop" (click)="showSortDropdown = false"></div>
+    <div
+      *ngIf="showDepartmentDropdown || showUserDropdown"
+      class="dropdown-backdrop"
+      (click)="closeDropdown()"
+    ></div>
+    <div
+      *ngIf="showSortDropdown"
+      class="dropdown-backdrop"
+      (click)="showSortDropdown = false"
+    ></div>
 
     <div mat-dialog-content>
       <div *ngFor="let attachment of auditAttachmentList">
         <div class="audit-attachment-user-details">
           <div class="main-layout-flex">
             <div class="main-layout-flex">
-              <span class="audit-history-name">{{attachment?.empName}}</span>
-              <button mat-button class="status-button" [ngClass]="getStatusClass(attachment?.status)">
-                <img src="/assets/images/{{attachment?.statusName | lowercase}}-icon.png">
-                {{ attachment?.statusName | titlecase}}
+              <span class="audit-history-name">{{ attachment?.empName }}</span>
+              <button
+                mat-button
+                class="status-button"
+                [ngClass]="getStatusClass(attachment?.status)"
+              >
+                <img
+                  src="/assets/images/{{
+                    attachment?.statusName | lowercase
+                  }}-icon.png"
+                />
+                {{ attachment?.statusName | titlecase }}
               </button>
             </div>
           </div>
           <div class="main-layout-grid">
             <span class="audit-history-department">
-              Department: {{attachment?.dept}}
-              <span class="audit-history-department"
-                [ngClass]="attachment?.role | lowercase">{{attachment?.role}}</span>
+              Department: {{ attachment?.dept }}
+              <span
+                class="audit-history-department"
+                [ngClass]="attachment?.role | lowercase"
+                >{{ attachment?.role }}</span
+              >
             </span>
           </div>
         </div>
 
         <!-- Attachments List -->
-        <div *ngFor="let groupedFile of getFilesGroupBy(attachment.fileIds) | keyvalue">
+        <div
+          *ngFor="
+            let groupedFile of getFilesGroupBy(attachment.fileIds) | keyvalue
+          "
+        >
           <span class="audit-attachment-type-title">
-            {{getDocumentType(groupedFile?.key)}}
+            {{ getDocumentType(groupedFile?.key) }}
           </span>
-          <div class="audit-attachment-content" *ngFor="let file of groupedFile.value">
+          <div
+            class="audit-attachment-content"
+            *ngFor="let file of groupedFile.value"
+          >
             <div class="main-layout-flex">
-              <span class="audit-attachment-name">{{file?.fileName}}</span>
-              <span class="audit-attachment-date">/
-                {{ datePipe.transform(file?.createdDt, dtconstant.dtFormat) }}</span>
-              <img src="/assets/images/open-attachment.png"
-                (click)="getApoDocAsync(file?.fileId, attachment?.empId ,'open')" style="cursor: pointer;">
-              <img src="/assets/images/download-attachment.png"
-                (click)="getApoDocAsync(file?.fileId,attachment?.empId , 'download')" style="cursor: pointer;">
-              <img src="/assets/images/compact-down-icon.png"
-                (click)="getApoDocAsync(file?.fileId,attachment?.empId , 'view')" style="cursor: pointer;">
+              <span class="audit-attachment-name">{{ file?.fileName }}</span>
+              <span class="audit-attachment-date"
+                >/
+                {{
+                  datePipe.transform(file?.createdDt, dtconstant.dtFormat)
+                }}</span
+              >
+              <img
+                src="/assets/images/open-attachment.png"
+                (click)="
+                  getApoDocAsync(file?.fileId, attachment?.empId, 'open')
+                "
+                style="cursor: pointer"
+              />
+              <img
+                src="/assets/images/download-attachment.png"
+                (click)="
+                  getApoDocAsync(file?.fileId, attachment?.empId, 'download')
+                "
+                style="cursor: pointer"
+              />
+              <img
+                src="/assets/images/compact-down-icon.png"
+                (click)="
+                  getApoDocAsync(file?.fileId, attachment?.empId, 'view')
+                "
+                style="cursor: pointer"
+              />
             </div>
             <div class="main-layout-flex">
-              <span class="audit-attachment-description">{{file?.fileDesc}}</span>
+              <span class="audit-attachment-description">{{
+                file?.fileDesc
+              }}</span>
             </div>
             <!-- === Inline Preview === -->
-            <div *ngIf="previewFileId === file?.fileId" class="preview-container">
-              <!-- PDF -->
-              <ng-container *ngIf="preview?.isPdf; else imagePreview">
-                <iframe [src]="preview?.safeSrc" width="100%" height="350px" title="{{ preview?.name }}">
-                </iframe>
-              </ng-container>
-              <!-- Images -->
-              <ng-template #imagePreview>
-                <img [src]="preview?.src" alt="{{ preview?.name }}" style="max-width: 100%; max-height: 520px;" />
-              </ng-template>
-            </div>
+<!-- Replace the entire preview container section in your template -->
+<div
+  *ngIf="previewFileId === file?.fileId"
+  class="preview-container"
+>
+  <!-- PDF -->
+  <ng-container *ngIf="preview?.isPdf; else imagePreview">
+    <div class="zoom-controls">
+      <button type="button" (click)="zoomOut()">-</button>
+      <span style="padding: 8px 12px; font-size: 14px; color: #666; user-select: none;">
+        {{ (zoomLevel * 100) | number:'1.0-0' }}%
+      </span>
+      <button type="button" (click)="zoomIn()">+</button>
+    </div>
+    <div class="pdf-container">
+      <iframe
+        [src]="preview?.safeSrc"
+        width="100%"
+        height="350px"
+        title="{{ preview?.name }}"
+        #pdfIframe
+      ></iframe>
+    </div>
+  </ng-container>
+
+  <!-- Images -->
+  <ng-template #imagePreview>
+    <div class="image-container">
+      <img
+        [src]="preview?.src"
+        alt="{{ preview?.name }}"
+      />
+    </div>
+  </ng-template>
+</div>
+
           </div>
         </div>
       </div>

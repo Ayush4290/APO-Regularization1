@@ -32,6 +32,24 @@ export class ApoOrdersList implements AfterViewInit, OnChanges, OnInit {
   roleId: any;
   userId: any;
   isDelete: boolean = false;
+
+  showFilterDialog: boolean = false;
+  filterData: any = {
+    requestId: '',
+    name: '',
+    service: '',
+    apoFromDate: null,
+    apoToDate: null,
+    apoDuration: '',
+    postFromDate: null,
+    postToDate: null,
+    postDuration: '',
+    joinFromDate: null,
+    joinToDate: null,
+    status: ''
+  };
+  activeFilters: any = {};
+
   constructor(private apoService: ApoService, public dialog: MatDialog, private router: Router, private route: ActivatedRoute, public datePipe: DatePipe) {
   }
 
@@ -49,7 +67,7 @@ export class ApoOrdersList implements AfterViewInit, OnChanges, OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
     setTimeout(() => {
-      if (changes) {
+      if (changes && changes['allApoOrders']) {
         let allApoOrders: any[] = changes['allApoOrders'].currentValue ?? [];
         allApoOrders?.forEach((row: any) => {
           row.apoDt = this.datePipe.transform(row?.apoDt, constants.dtFormat)
@@ -88,15 +106,11 @@ export class ApoOrdersList implements AfterViewInit, OnChanges, OnInit {
 
       this.filterPredicate();
     }, 200);
-
-
   }
 
   filterPredicate() {
     this.dataSource.filterPredicate = (data: PeriodicElement, filter: string) => {
-      // Concatenate all searchable string values from the object
       const dataStr = Object.values(data).join('').toLowerCase();
-      // Concatenate all values from nested objects (if any)
       const empNameStr = data.person.empName.toLowerCase();
       const serviceStr = data.person.service.toLowerCase();
       const apoDtStr = data.apoDt.toString().toLowerCase();
@@ -106,7 +120,6 @@ export class ApoOrdersList implements AfterViewInit, OnChanges, OnInit {
 
       const filterStr = filter.trim().toLowerCase();
 
-      // Check for a match in the main object or the nested object
       return dataStr.includes(filterStr) || empNameStr.includes(filterStr)
         || serviceStr.includes(filterStr) || apoDtStr.includes(filterStr)
         || posOrderDtStr.includes(filterStr) || joiningDtStr.includes(filterStr)
@@ -114,9 +127,61 @@ export class ApoOrdersList implements AfterViewInit, OnChanges, OnInit {
     };
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
+  openFilterDialog(): void {
+    this.showFilterDialog = true;
+  }
+
+  closeFilterDialog(): void {
+    this.showFilterDialog = false;
+  }
+
+  applyRequestIdFilter(): void {
+    if (this.filterData.requestId) {
+      this.dataSource.filter = this.filterData.requestId.trim().toLowerCase();
+    } else {
+      this.dataSource.filter = '';
+    }
+  }
+
+  applyNameFilter(): void {
+    if (this.filterData.name) {
+      this.dataSource.filter = this.filterData.name.trim().toLowerCase();
+    } else {
+      this.dataSource.filter = '';
+    }
+  }
+
+  applyAllFilters(): void {
+    let filterValue = '';
+    if (this.filterData.requestId) filterValue += this.filterData.requestId + ' ';
+    if (this.filterData.name) filterValue += this.filterData.name + ' ';
+    if (this.filterData.service) filterValue += this.filterData.service + ' ';
+
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.closeFilterDialog();
+  }
+
+  clearAllFilters(): void {
+    this.filterData = {
+      requestId: '',
+      name: '',
+      service: '',
+      apoFromDate: null,
+      apoToDate: null,
+      apoDuration: '',
+      postFromDate: null,
+      postToDate: null,
+      postDuration: '',
+      joinFromDate: null,
+      joinToDate: null,
+      status: ''
+    };
+    this.dataSource.filter = '';
+    this.closeFilterDialog();
+  }
+
+  hasActiveFilters(): boolean {
+    return this.filterData.requestId || this.filterData.name || this.filterData.service || Object.values(this.filterData).some(v => v !== '' && v !== null);
   }
 
   getStatusClass(statusId: any): string {
@@ -166,8 +231,6 @@ export class ApoOrdersList implements AfterViewInit, OnChanges, OnInit {
         leftbtntext: 'Cancel',
         rightbtntext: 'Yes, Delete',
         icon: 'assets/images/discord-application.png'
-
-
       }
     });
 

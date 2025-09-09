@@ -15,6 +15,10 @@ export class ApoConsultDialog implements OnInit {
   consultForm: FormGroup;
   deptList: any[] = [];
   reasons: any[] = [];
+  // Add search trackers (one per row, for inside-dropdown search)
+  deptSearchTexts: string[] = [];
+  reasonSearchTexts: string[] = [];
+
   constructor(private fb: FormBuilder, private apoService: ApoService, public dialog: MatDialog, public dialogRef: MatDialogRef<ApoConsultDialog>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.consultForm = this.fb.group({
       consults: this.fb.array([])
@@ -40,6 +44,9 @@ export class ApoConsultDialog implements OnInit {
             reason: ['', [Validators.required]],
             deptList: [this.deptList]
           }));
+          // Initialize search trackers for first row
+          this.deptSearchTexts.push('');
+          this.reasonSearchTexts.push('');
         }, 100)
       }
     })
@@ -53,6 +60,43 @@ export class ApoConsultDialog implements OnInit {
     })
   }
 
+  // Filter method for departments (called in template)
+  filterDepts(searchText: string, fullList: any[]): any[] {
+    if (!searchText.trim()) {
+      // For Department, return the per-row filtered list (no duplicates)
+      const currentDeptIds = this.consults.controls.map((ctrl, idx) => idx !== this.consults.length - 1 ? ctrl.value.department : null).filter(id => id);
+      return fullList.filter((dept: any) => !currentDeptIds.includes(dept.deptId));
+    }
+    return fullList.filter(dept => dept.deptName.toLowerCase().includes(searchText.toLowerCase()));
+  }
+
+  // Filter method for reasons (global, no duplicates logic needed)
+  filterReasons(searchText: string): any[] {
+    if (!searchText.trim()) {
+      return this.reasons;
+    }
+    return this.reasons.filter(r => r.reasonName.toLowerCase().includes(searchText.toLowerCase()));
+  }
+
+  // Update search text for a specific row (Department) - called on input
+  updateDeptSearch(index: number, event: any): void {
+    this.deptSearchTexts[index] = event.target.value;
+  }
+
+  // Update search text for a specific row (Reason) - called on input
+  updateReasonSearch(index: number, event: any): void {
+    this.reasonSearchTexts[index] = event.target.value;
+  }
+
+  // Reset search for a row when dropdown closes (optional, for UX)
+  onDeptClosed(index: number): void {
+    this.deptSearchTexts[index] = '';
+  }
+
+  onReasonClosed(index: number): void {
+    this.reasonSearchTexts[index] = '';
+  }
+
   addMoreConsult() {
     if (this.consultForm.valid) {
       let deptIds = this.consults.controls.map(x => x.value.department);
@@ -61,6 +105,9 @@ export class ApoConsultDialog implements OnInit {
         reason: ['', [Validators.required]],
         deptList: [this.deptList.filter((dept: any) => !deptIds.includes(dept.deptId))]
       }));
+      // Initialize search trackers for new row
+      this.deptSearchTexts.push('');
+      this.reasonSearchTexts.push('');
     } else {
       this.consultForm.markAllAsTouched()
     }
@@ -68,6 +115,9 @@ export class ApoConsultDialog implements OnInit {
 
   removeConsult(index: number): void {
     this.consults.removeAt(index);
+    // Remove search trackers for removed row
+    this.deptSearchTexts.splice(index, 1);
+    this.reasonSearchTexts.splice(index, 1);
   }
 
   onCancelClick(status: any): void {

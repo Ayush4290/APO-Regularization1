@@ -1,11 +1,4 @@
 <div class="main-layout">
-    <div class="search-container">
-        <mat-form-field appearance="outline">
-            <mat-icon matPrefix>search</mat-icon>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Search..">
-        </mat-form-field>
-    </div>
-
     <div class="table-container">
         <table mat-table [dataSource]="dataSource" matSort matSortActive="orderNo" matSortDisableClear
             matSortDirection="desc">
@@ -129,9 +122,193 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
-    <div>
+    <div class="pagination-container">
         <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
             style="display: flex ; justify-content: center;" aria-label="Select page of periodic elements">
         </mat-paginator>
+    </div>
+
+    <!-- Filter Button and Popup (moved to right side) -->
+    <div class="filter-section-right">
+        <button mat-raised-button color="primary" (click)="openFilterDialog()" class="filter-button">
+            <mat-icon>filter_list</mat-icon> Filter 
+        </button>
+        <button mat-button (click)="clearAllFilters()" class="clear-button" *ngIf="hasActiveFilters()">
+            Clear All
+        </button>
+    </div>
+
+    <div class="filter-dialog-overlay" *ngIf="showFilterDialog">
+        <div class="filter-dialog">
+            <div class="filter-header">
+  <div class="filter-title">
+    <mat-icon>filter_list</mat-icon>
+    <h3>Filter</h3>
+  </div>
+  <button mat-icon-button (click)="closeFilterDialog()" class="close-button">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+            
+            <div class="filter-content">
+                <!-- Top 3 search filters in grid -->
+                <div class="filter-grid">
+                    <!-- Request ID Search -->
+                    <div class="filter-section">
+                        <label>Request ID Search</label>
+                        <div class="filter-row">
+                            <mat-form-field appearance="outline" class="filter-input">
+                                <input matInput [(ngModel)]="filterData.requestId" placeholder="Search">
+                            </mat-form-field>
+                            <button mat-icon-button (click)="applyRequestIdFilter()" class="search-icon">
+                                <mat-icon>search</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Name Search -->
+                    <div class="filter-section">
+                        <label>Name Search</label>
+                        <div class="filter-row">
+                            <mat-form-field appearance="outline" class="filter-input">
+                                <input matInput [(ngModel)]="filterData.name" placeholder="Search">
+                            </mat-form-field>
+                            <button mat-icon-button (click)="applyNameFilter()" class="search-icon">
+                                <mat-icon>search</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Service Selector -->
+                    <div class="filter-section">
+                        <label>Service Selection</label>
+                        <mat-form-field appearance="outline" class="filter-select">
+                            <mat-select [(ngModel)]="filterData.service" placeholder="Select Service">
+                                <mat-option value="">All Services</mat-option>
+                                <mat-option value="Rural Development">Rural Development</mat-option>
+                                <mat-option value="Urban Development">Urban Development</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- APO Date Section -->
+                <div class="apo-date-section">
+                    <div class="date-section">
+                        <div class="filter-section">
+                            <label>APO Date Selector</label>
+                            <div class="date-range-container">
+                                <mat-form-field appearance="outline" class="date-input">
+                                    <mat-label>From</mat-label>
+                                    <input matInput [matDatepicker]="apoFromPicker" [(ngModel)]="filterData.apoFromDate">
+                                    <mat-datepicker-toggle matSuffix [for]="apoFromPicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #apoFromPicker></mat-datepicker>
+                                </mat-form-field>
+                                <span>-</span>
+                                <mat-form-field appearance="outline" class="date-input">
+                                    <mat-label>To</mat-label>
+                                    <input matInput [matDatepicker]="apoToPicker" [(ngModel)]="filterData.apoToDate">
+                                    <mat-datepicker-toggle matSuffix [for]="apoToPicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #apoToPicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="filter-section">
+                            <label>APO Duration Selector</label>
+                            <mat-form-field appearance="outline" class="duration-select">
+                                <mat-select [(ngModel)]="filterData.apoDuration">
+                                    <mat-option value="">All</mat-option>
+                                    <mat-option value="Less than 30 days">Less than 30 Days</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div></div> <!-- Empty column for spacing -->
+                    </div>
+                </div>
+
+                <!-- Posting Date Section -->
+                <div class="posting-date-section">
+                    <div class="date-section">
+                        <div class="filter-section">
+                            <label>Posting Date Selector</label>
+                            <div class="date-range-container">
+                                <mat-form-field appearance="outline" class="date-input">
+                                    <mat-label>From</mat-label>
+                                    <input matInput [matDatepicker]="postFromPicker" [(ngModel)]="filterData.postFromDate">
+                                    <mat-datepicker-toggle matSuffix [for]="postFromPicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #postFromPicker></mat-datepicker>
+                                </mat-form-field>
+                                <span>-</span>
+                                <mat-form-field appearance="outline" class="date-input">
+                                    <mat-label>To</mat-label>
+                                    <input matInput [matDatepicker]="postToPicker" [(ngModel)]="filterData.postToDate">
+                                    <mat-datepicker-toggle matSuffix [for]="postToPicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #postToPicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="filter-section">
+                            <label>Duration Selection<br></label>
+                            <mat-form-field appearance="outline" class="duration-select">
+                                <mat-select [(ngModel)]="filterData.postDuration">
+                                    <mat-option value="">All</mat-option>
+                                    <mat-option value="Less than 30 days">Less than 30 Days</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div></div> <!-- Empty column for spacing -->
+                    </div>
+                </div>
+
+                <!-- Joining Date Section -->
+                <div class="joining-date-section">
+                    <div class="date-section">
+                        <div class="filter-section">
+                            <label>Joining Date Selector<br></label>
+                            <div class="date-range-container">
+                                <mat-form-field appearance="outline" class="date-input">
+                                    <mat-label>From</mat-label>
+                                    <input matInput [matDatepicker]="joinFromPicker" [(ngModel)]="filterData.joinFromDate">
+                                    <mat-datepicker-toggle matSuffix [for]="joinFromPicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #joinFromPicker></mat-datepicker>
+                                </mat-form-field>
+                                <span>-</span>
+                                <mat-form-field appearance="outline" class="date-input">
+                                    <mat-label>To</mat-label>
+                                    <input matInput [matDatepicker]="joinToPicker" [(ngModel)]="filterData.joinToDate">
+                                    <mat-datepicker-toggle matSuffix [for]="joinToPicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #joinToPicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="filter-section">
+                            <label>Status Selector<br></label>
+                            <mat-form-field appearance="outline" class="status-select">
+                                <mat-select [(ngModel)]="filterData.status">
+                                    <mat-option value="">All Status</mat-option>
+                                    <mat-option value="Returned">Returned</mat-option>
+                                    <mat-option value="Draft">Draft</mat-option>
+                                    <mat-option value="Pending">Pending</mat-option>
+                                    <mat-option value="Approved">Approved</mat-option>
+                                    <mat-option value="Rejected">Rejected</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div></div> <!-- Empty column for spacing -->
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="filter-actions">
+                    <button mat-raised-button color="warn" (click)="clearAllFilters()" class="clear-all-btn">
+                        Clear All
+                    </button>
+                    <button mat-raised-button color="primary" (click)="applyAllFilters()" class="apply-btn">
+                        Apply 
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -13,6 +13,10 @@
   margin-top: 2px;
   font-family: 'Roboto', sans-serif;
 }
+.preview-container {
+    position: relative;
+    overflow: hidden;
+}
 
 /* User Dropdown Styles */
 .user-dropdown {
@@ -267,35 +271,10 @@
   }
 }
 
-/* === Inline preview styles === */
-.preview-container {
-  border: 1px solid #e6e6e6;
-  border-radius: 8px;
-  padding: 16px;
-  margin: 16px 0;
-  background: #fafafa;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 
-.preview-container iframe {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  display: block;
-  width: 100%;
-  background: white;
-}
 
-.preview-container img {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  background: white;
-  padding: 8px;
-  box-sizing: border-box;
-}
+
+
 
 
 
@@ -424,3 +403,85 @@
   margin-right: -4px;
   vertical-align: middle;
 }
+
+
+/* Fix zoom controls positioning */
+.zoom-controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    justify-content: center;
+    position: relative; /* Keep as relative */
+    z-index: 99;
+    padding: 8px 0; /* Remove excessive padding */
+    /* Remove the top positioning */
+}
+
+.zoom-controls button {
+    color: #ff6b35;
+    background-color: white;
+    border: 1px solid #ff6b35;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    min-width: 40px;
+}
+
+.zoom-controls button:hover {
+    background-color: #ff6b35;
+    color: white;
+}
+
+/* Fix preview container */
+.preview-container {
+    position: relative;
+    overflow: visible; /* Keep as visible */
+    min-height: 350px;
+    width: 100%;
+    margin: 16px 0; /* Add margin for better spacing */
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    padding: 16px;
+    background: #fafafa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure iframe container allows proper scaling */
+.preview-container .pdf-container {
+    overflow: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    position: relative;
+}
+
+.preview-container iframe {
+    border: none;
+    display: block;
+    width: 100%;
+    height: 350px;
+    transform-origin: top left;
+}
+
+/* Fix image container */
+.preview-container .image-container {
+    text-align: center;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+}
+
+.preview-container .image-container img {
+    max-width: 100%;
+    height: auto;
+    min-height: 300px;
+    object-fit: contain;
+    border: none; /* Remove border from img itself */
+    padding: 0; /* Remove padding from img itself */
+}
+
+
+

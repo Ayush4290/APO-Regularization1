@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { SharedModule } from '../../../common/shared-module';
 import { DatePipe } from '@angular/common';
 import { EnumRole, EnumStatus } from '../../../common/enums';
@@ -29,10 +29,12 @@ export class ApoHistoryAttachments implements OnChanges, OnInit {
   deptAttachmentList: any = [];
   userAttachmentList: any = [];
 
+  zoomLevel: number = 1.0; // Initial zoom level
+@ViewChild('pdfIframe') pdfIframe!: ElementRef;
   statusList: any;
   dtconstant = constants;
   // === Inline preview state (ADD THIS) ===
-  previewFileId: number | null = null; // which file's preview is open
+  previewFileId: number | null = null; 
   preview: { type: string; isPdf: boolean; src: string; safeSrc: any; name: string } | null = null;
 
   // Department dropdown properties
@@ -95,7 +97,7 @@ export class ApoHistoryAttachments implements OnChanges, OnInit {
         });
       } else if (audit?.changedBy == null) {
         if (this.roleId == EnumRole.INITIATOR) {
-          if (audit?.status == EnumStatus.PENDING) { // For all reviewer show case
+          if (audit?.status == EnumStatus.PENDING) { 
             if (audit?.roleId && audit?.deptId == null) {
               let usersList = this.originalUserList.filter((user: any) => user.role == audit.roleId);
               usersList.forEach((user: any) => {
@@ -113,7 +115,7 @@ export class ApoHistoryAttachments implements OnChanges, OnInit {
                   comment: audit?.comment
                 });
               })
-            } else if (audit?.roleId == null && audit?.deptId) { // For consult reviewer show case
+            } else if (audit?.roleId == null && audit?.deptId) { 
               let changedByIds = this.auditHistory.filter((x: any) => x.changedBy != null).map((x: any) => x.changedBy?.empId);
               let usersList = this.originalUserList.filter((user: any) => user.dept == audit?.deptId && user?.role == EnumRole.CONSULT && !changedByIds.includes(user.empId));
               usersList.forEach((user: any) => {
@@ -220,6 +222,43 @@ export class ApoHistoryAttachments implements OnChanges, OnInit {
     })
   }
 
+zoomIn() {
+  this.zoomLevel += 0.2;
+  if (this.zoomLevel > 3.0) this.zoomLevel = 3.0; 
+  setTimeout(() => this.adjustIframeSize(), 0);
+}
+
+zoomOut() {
+  this.zoomLevel -= 0.2;
+  if (this.zoomLevel < 0.5) this.zoomLevel = 0.5;
+  setTimeout(() => this.adjustIframeSize(), 0);
+}
+
+adjustIframeSize() {
+  // Try to find the iframe element
+  const iframe = document.querySelector('iframe[title="' + this.preview?.name + '"]') as HTMLIFrameElement;
+  
+  if (iframe) {
+    iframe.style.transform = `scale(${this.zoomLevel})`;
+    iframe.style.transformOrigin = 'top left';
+    iframe.style.width = '100%';
+    iframe.style.height = '350px';
+    
+    // Adjust the parent container
+    const container = iframe.parentElement;
+    if (container) {
+      // Calculate new container dimensions
+      const scaledWidth = 100 * this.zoomLevel;
+      const scaledHeight = 350 * this.zoomLevel;
+      
+      container.style.width = `${scaledWidth}%`;
+      container.style.height = `${scaledHeight}px`;
+      container.style.overflow = this.zoomLevel > 1 ? 'auto' : 'visible';
+    }
+  }
+}
+
+
   async getEmpAsync() {
     await this.apoService.getEmpAsync().then(res => {
       if (res) {
@@ -247,6 +286,8 @@ export class ApoHistoryAttachments implements OnChanges, OnInit {
       return 'Additional Documents'
     }
   }
+
+  
 
   // Filter button click handlers
   onFilterButtonClick(filterType: string) {
@@ -405,39 +446,49 @@ export class ApoHistoryAttachments implements OnChanges, OnInit {
     }
   }
 
-  async getApoDocAsync(fileId: any, createdBy: any, type: any) {
-    await this.apoService.getApoDocAsync({ "fileIds": [fileId], "createdBy": createdBy }).then(res => {
-      if (res?.files) {
-        if (type == 'download') {
-          this.downloadFiles(res?.files[0]?.fileContent, res?.files[0]?.fileType, res?.files[0]?.fileName);
-        } else if (type == 'open') {
-          this.openFileInNewTab(res?.files[0].fileContent, res?.files[0]?.fileType);
-        } else if (type === 'view') {
-          const file = res?.files[0];
-          if (!file) return;
+async getApoDocAsync(fileId: any, createdBy: any, type: any) {
+  await this.apoService.getApoDocAsync({ "fileIds": [fileId], "createdBy": createdBy }).then(res => {
+    if (res?.files) {
+      if (type == 'download') {
+        this.downloadFiles(res?.files[0]?.fileContent, res?.files[0]?.fileType, res?.files[0]?.fileName);
+      } else if (type == 'open') {
+        this.openFileInNewTab(res?.files[0].fileContent, res?.files[0]?.fileType);
+      } else if (type === 'view') {
+        const file = res?.files[0];
+        if (!file) return;
 
-          // Toggle off if clicking the same file again
-          if (this.previewFileId === fileId) {
-            this.previewFileId = null;
-            this.preview = null;
-            return;
-          }
+        // Close preview if same file clicked
+        if (this.previewFileId === fileId) {
+          this.previewFileId = null;
+          this.preview = null;
+          return;
+        }
 
-          const base64String = `data:${file?.fileType};base64,${file?.fileContent}`;
-          const safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(base64String);
+        const base64String = `data:${file?.fileType};base64,${file?.fileContent}`;
+        const safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(base64String);
 
-          this.previewFileId = fileId;
-          this.preview = {
-            type: file?.fileType,
-            isPdf: (file?.fileType || '').toLowerCase().includes('pdf'),
-            src: base64String,
-            safeSrc: safeUrl,
-            name: file?.fileName
-          };
+        this.previewFileId = fileId;
+        this.preview = {
+          type: file?.fileType,
+          isPdf: (file?.fileType || '').toLowerCase().includes('pdf'),
+          src: base64String,
+          safeSrc: safeUrl,
+          name: file?.fileName
+        };
+
+        this.zoomLevel = 1.0; // Reset zoom level
+        
+        // Wait for DOM to update then adjust iframe
+        if (this.preview.isPdf) {
+          setTimeout(() => {
+            this.adjustIframeSize();
+          }, 200);
         }
       }
-    });
-  }
+    }
+  });
+}
+
 
   async showAttachmentDialog(fileIds: any[], userId: any) {
     fileIds = fileIds.map((x: any) => x.fileId);
