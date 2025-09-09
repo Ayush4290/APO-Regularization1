@@ -1,0 +1,426 @@
+/* Department Dropdown Styles */
+.department-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 280px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 0;
+  margin-top: 2px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* User Dropdown Styles */
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 280px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 0;
+  margin-top: 2px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Dropdown backdrop */
+.dropdown-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  z-index: 999;
+}
+
+/* Search section */
+.dropdown-search {
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 5px 12px;
+}
+
+.search-icon[_ngcontent-ng-c2108905796] {
+  color: #a3a3a3;
+  font-size: 18px;
+  margin-right: 8px;
+  margin-top: 0 !important;
+  margin-bottom: -7px !important;
+}
+
+.search-icon {
+  color: #666;
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  color: #333;
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.filter-icon {
+  color: #ea781a;
+  font-size: 18px;
+  margin-left: 8px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+/* Sort section */
+.sort-section {
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  background: white;
+}
+
+.sort-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.sort-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sort-radio-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 13px;
+  color: #555;
+}
+
+.sort-radio {
+  margin-right: 8px;
+  accent-color: #ff6b35;
+}
+
+.sort-radio-label {
+  user-select: none;
+}
+
+/* Department list */
+.department-list {
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.department-item {
+  padding: 0 8px;
+}
+
+.department-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 8px 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background-color 0.2s ease;
+  border-radius: 8px;
+}
+
+.department-checkbox-wrapper:hover {
+  background-color: #ea781a1f;
+}
+
+.department-checkbox {
+  margin-right: 10px;
+  accent-color: #ff6b35;
+  cursor: pointer;
+}
+
+.department-checkbox-label {
+  user-select: none;
+  cursor: pointer;
+}
+
+/* User list styles */
+.user-list {
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.user-item {
+  padding: 0 8px;
+}
+
+.user-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 8px 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background-color 0.2s ease;
+  border-radius: 8px;
+}
+
+.user-checkbox-wrapper:hover {
+  background-color: #ea781a1f;
+}
+
+.user-checkbox {
+  margin-right: 10px;
+  accent-color: #ff6b35;
+  cursor: pointer;
+}
+
+.user-checkbox-label {
+  user-select: none;
+  cursor: pointer;
+}
+
+/* Active button state */
+/* .audit-history-attachment-button.active {
+  background-color: #ff6b35 !important;
+  color: white !important;
+} */
+
+.audit-history-attachment-button {
+  transition: all 0.2s ease;
+  border: 1px solid #ddd;
+  background-color: white;
+  color: #333;
+  font-size: 13px !important;
+  padding: 6px 16px;
+  border-radius: 4px;
+}
+
+.audit-history-attachment-button:hover {
+  background-color: #f5f5f5;
+}
+
+.audit-history-attachment-button.active:hover {
+  background-color: #e55a2b !important;
+}
+
+/* Custom scrollbar for lists */
+.department-list::-webkit-scrollbar,
+.user-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.department-list::-webkit-scrollbar-track,
+.user-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.department-list::-webkit-scrollbar-thumb,
+.user-list::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.department-list::-webkit-scrollbar-thumb:hover,
+.user-list::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Animation for dropdowns */
+.department-dropdown,
+.user-dropdown {
+  animation: dropdownSlide 0.15s ease-out;
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Inline preview styles === */
+.preview-container {
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  background: #fafafa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.preview-container iframe {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+  background: white;
+}
+
+.preview-container img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  background: white;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+/* Status button styles */
+.status-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: none;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.draft-button {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.submitted-button {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.pending-button {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.returned-button {
+  background-color: #fce4ec;
+  color: #c2185b;
+}
+
+.rejected-button {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
+
+.approved-button {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+}
+
+.consult-button {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.responeded-button {
+  background-color: #e0f2f1;
+  color: #00695c;
+}
+
+/* Audit history styles */
+.audit-history-name {
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+}
+
+.audit-history-datetime {
+  font-size: 12px;
+  color: #999;
+}
+
+.audit-history-description {
+  font-size: 13px;
+  color: #333;
+  margin-top: 4px;
+}
+
+
+
+.audit-attachment-user-details {
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+
+
+.audit-attachment-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  flex: 1;
+}
+
+.audit-attachment-date {
+  font-size: 12px;
+  color: #000000;
+}
+
+
+/* Layout helpers */
+.main-layout-flex {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  justify-content: space-between;
+}
+
+.main-layout-grid {
+  display: grid;
+  gap: 4px;
+  margin-top: 0px;
+}
+
+.audit-history-attachment-button-layout {
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 16px;
+}
+
+.audit-history-attachment-button mat-icon {
+  font-size: 18px;
+  margin-right: -4px;
+  vertical-align: middle;
+}

@@ -1,0 +1,50 @@
+<button mat-button class="tab-mat-button tab-mat-button-font" [ngClass]="{'active': activeTab === enumStatus.ALL}"
+    (click)="onTabChange(enumStatus.ALL)">
+    All ({{this.allCount}})
+</button>
+
+<button *ngIf="this.roleId==enumRole.INITIATOR" mat-button class="tab-mat-button tab-mat-button-font"
+    [ngClass]="{'active': activeTab === enumStatus.DRAFT}" (click)="onTabChange(enumStatus.DRAFT)">
+    Draft ({{this.draftCount}})
+</button>
+
+<button mat-button class="tab-mat-button tab-mat-button-font" [ngClass]="{'active': activeTab === enumStatus.PENDING}"
+    (click)="onTabChange(enumStatus.PENDING)">
+    Pending ({{this.pendingCount}})
+</button>
+
+<button *ngIf="this.roleId==enumRole.INITIATOR ||this.roleId==enumRole.REVIEWER || this.roleId==enumRole.APPROVER" mat-button
+    class="tab-mat-button tab-mat-button-font" [ngClass]="{'active': activeTab === enumStatus.RETURNED}"
+    (click)="onTabChange(enumStatus.RETURNED)">
+    Returned ({{this.returnedCount}})
+</button>
+
+<button *ngIf="this.roleId==enumRole.INITIATOR ||this.roleId==enumRole.REVIEWER" mat-button
+    class="tab-mat-button tab-mat-button-font" [ngClass]="{'active': activeTab === enumStatus.SUBMITTED}"
+    (click)="onTabChange(enumStatus.SUBMITTED)">
+    Submitted ({{this.submittedCount}})
+</button>
+
+<button *ngIf="this.roleId==enumRole.INITIATOR ||this.roleId==enumRole.REVIEWER || this.roleId==enumRole.APPROVER" mat-button
+    class="tab-mat-button tab-mat-button-font" [ngClass]="{'active': activeTab === enumStatus.REJECTED}"
+    (click)="onTabChange(enumStatus.REJECTED)">
+    Rejected ({{this.rejectedCount}})
+</button>
+
+<button *ngIf="this.roleId==enumRole.INITIATOR ||this.roleId==enumRole.REVIEWER || this.roleId==enumRole.APPROVER" mat-button
+    class="tab-mat-button tab-mat-button-font" [ngClass]="{'active': activeTab === enumStatus.APPROVED}"
+    (click)="onTabChange(enumStatus.APPROVED)">
+    Approved ({{this.approvedCount}})
+</button>
+
+<button *ngIf="this.roleId==enumRole.REVIEWER || this.roleId==enumRole.APPROVER" mat-button
+    class="tab-mat-button tab-mat-button-font" [ngClass]="{'active': activeTab === enumStatus.CONSULT}"
+    (click)="onTabChange(enumStatus.CONSULT)">
+    Consult ({{this.consultCount}})
+</button>
+
+<button *ngIf="this.roleId==enumRole.CONSULT" mat-button class="tab-mat-button tab-mat-button-font"
+    [ngClass]="{'active': activeTab === enumStatus.RESPONEDED}" (click)="onTabChange(enumStatus.RESPONEDED)">
+    Submitted ({{this.responededCount}})
+</button>
+<app-apo-orders-list [allApoOrders]='allApoOrders' (orderNoSent)="onOrderNoReceived($event)"></app-apo-orders-list>

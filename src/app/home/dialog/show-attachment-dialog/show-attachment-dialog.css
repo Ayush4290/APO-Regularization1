@@ -1,0 +1,103 @@
+.show-attachment {
+  opacity: 1;
+  border-radius: 16px !important;
+}
+
+.show-attachment-top {
+  opacity: 1;
+  padding: 10px !important;
+  border-bottom-width: 1px !important;
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #d1d5db !important;
+  display: flex !important;
+}
+
+.show-attachment-title {
+  margin-top: 8px !important;
+  margin-left: 16px !important;
+  font-family: Roboto !important;
+  font-weight: 500 !important;
+  font-style: Medium !important;
+  font-size: 17px !important;
+  line-height: 28px !important;
+  letter-spacing: 0% !important;
+  color: #333333 !important;
+}
+
+.show-attachment-type-title {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0%;
+  text-align: right;
+  color: #333333 !important;
+}
+
+.mat-icon-button-close {
+  margin-left: 385px !important;
+}
+
+.show-attachment-main {
+  opacity: 1px !important;
+  gap: 16px !important;
+  padding-top: 10px !important;
+  padding-right: 24px !important;
+  padding-bottom: 20px !important;
+  padding-left: 24px !important;
+  background-color: #ffffff;
+}
+
+.show-attachment-content {
+  opacity: 1;
+  border-radius: 12px !important;
+  border-width: 1px !important;
+  padding-top: 8px !important;
+  /* padding-right: 12px !important; */
+  padding-bottom: 8px !important;
+  padding-left: 12px !important;
+  background-color: #f6f6f6;
+  border: 1px solid #dcdcdc;
+  margin-bottom: 8px !important;
+}
+
+.show-attachment-name {
+  font-family: Roboto !important;
+  font-weight: 500 !important;
+  font-style: Medium !important;
+  font-size: 13px !important;
+  line-height: 22px !important;
+  letter-spacing: 0% !important;
+  color: #333333;
+}
+
+.show-attachment-date {
+  font-family: Roboto !important;
+  font-weight: 400 !important;
+  font-style: Medium !important;
+  font-size: 12px !important;
+  line-height: 22px !important;
+  letter-spacing: 0% !important;
+  color: #333333;
+}
+
+.show-attachment-description {
+  font-family: Roboto !important;
+  font-weight: 400 !important;
+  font-style: Regular !important;
+  font-size: 13px !important;
+  line-height: 20px !important;
+  letter-spacing: 0% !important;
+  color: #5c5c5c !important;
+}
+
+.attachment-icon {
+  cursor: pointer;
+}
+
+.show-attachment-content .main-layout-flex {
+    justify-content: space-between;
+    width: auto !important;
+    margin-right: 5px;
+}

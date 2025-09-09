@@ -1,0 +1,55 @@
+<div class="add-attachment">
+    <div class="add-attachment-top">
+        <label class="add-attachment-title">{{title}}</label>
+        <button mat-icon-button color="accent" class="circle-button mat-icon-button-close" (click)="onCancelClick()">
+            <img src="\assets\images\close-icon.png">
+        </button>
+    </div>
+    <form [formGroup]="docForm" (ngSubmit)="onSubmit()">
+        <div formArrayName="files">
+            <div mat-dialog-content class="add-attachment-main">
+                <div class="add-attachment-drop">
+                    <label class="add-attachment-drop-lable">Drop files (JPEG, PNG, PDF) here to upload</label>
+                    <label class="add-attachment-drop-lable">Or</label>
+                    <input id="attachment" type="file" #fileInputHidden (change)="onFileSelected($event)"
+                        accept=".jpeg,.jpg,.png,.pdf" style="display: none;">
+                    <button type="button" mat-button class="add-attachment-drop-button"
+                        (click)="fileInputHidden.click()">Select Files</button>
+                </div>
+                <span class="add-attachment-upload-message">Uploaded Files</span>
+                <span class="add-attachment-message">* Can upload maximum 05 files (2MB each)</span>
+                <div class="add-attachment-content" *ngFor="let file of files.controls; let i = index"
+                    [formGroupName]="i">
+                    <div class="form-row">
+                        <div class="form-row-field">
+                            <label class="add-attachment-content-lable">Attachment Description<span
+                                    class="required-star">*</span></label>
+                            <mat-form-field appearance="outline" class="example-full-width">
+                                <input matInput formControlName="fileDesc" placeholder="Enter description">
+                                <mat-error *ngIf="file?.get('fileDesc')?.invalid && file?.get('fileDesc')?.touched">
+                                    This field is required.
+                                </mat-error>
+                            </mat-form-field>
+                            <img *ngIf="file.value.fileType=='application/pdf'" src="\assets\images\pdf-icon.png"
+                                class="add-attachment-icon">
+                            <img *ngIf="file.value.fileType!='application/pdf'" src="\assets\images\image-icon.png"
+                                class="add-attachment-icon">
+                            <div class="add-attachment-show-name">
+                                <span class="add-attachment-file-name">{{file?.value?.fileName}}</span>
+                                <span class="add-attachment-file-size">Size: {{(file?.value?.fileSize/1024).toFixed(2)}}
+                                    KB</span>
+                                <button mat-button type="button" class="add-attachment-file-delete-button"
+                                    (click)="removeFile(i)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="files.controls.length>0" class="add-attachment-bottom">
+            <button mat-button type="button" class="add-attachment-discard-button"
+                (click)="onCancelClick()">Discard</button>
+            <button mat-button class="add-attachment-save-button">Save</button>
+        </div>
+    </form>
+</div>

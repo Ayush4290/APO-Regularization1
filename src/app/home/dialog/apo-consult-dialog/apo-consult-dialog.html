@@ -1,0 +1,64 @@
+<div class="consult-attachment">
+    <div class="consult-attachment-top">
+        <label class="consult-attachment-title">Choose Department to Consult</label>
+        <button mat-icon-button color="accent" class="circle-button mat-icon-button-close"
+            (click)="onCancelClick('no')">
+            <img src="\assets\images\close-icon.png">
+        </button>
+    </div>
+    <form [formGroup]="consultForm" (ngSubmit)="onSubmit()">
+        <div mat-dialog-content class="consult-attachment-main" formArrayName="consults">
+            <label class="consult-attachment-type-title">Choose Department & Reason of Consultation</label>
+            <div class="consult-attachment-content" *ngFor="let consult of consults.controls; let i = index"
+                [formGroupName]="i">
+                <div class="main-layout-flex form-row">
+                    <div class="form-row-field">
+                        <label class="mat-lable-text">Department<span class="required-star">*</span></label>
+                        <mat-form-field appearance="outline" class="example-full-width" id="popupInput">
+                            <mat-select id="department" formControlName="department" placeholder="Select Department">
+                                <mat-option *ngFor="let dept of consult.value.deptList" [value]="dept.deptId">
+                                    {{ dept.deptName }}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="consult.get('department')?.invalid && consult.get('department')?.touched">
+                                Select Department
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-row-field">
+                        <label class="mat-lable-text">Reason for Consultation<span
+                                class="required-star">*</span></label>
+                        <mat-form-field appearance="outline" class="example-full-width" id="popupInput">
+                            <mat-select id="reason" formControlName="reason" placeholder="Select Reason" multiple>
+                                <mat-option *ngFor="let r of reasons" [value]="r.reasonId">
+                                    {{ r.reasonName }}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="consult.get('reason')?.invalid && consult.get('reason')?.touched">
+                                Select Reason
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-row-field" style="margin-top: 25px;">
+                        <button *ngIf="i==0" type="button" mat-icon-button color="accent" class="circle-button">
+                            <img src="\assets\images\delete-white-icon.png">
+                        </button>
+                        <button *ngIf="i>0" type="button" mat-icon-button (click)="removeConsult(i)" color="accent"
+                            class="circle-button">
+                            <img src="\assets\images\delete-red-icon.png">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <button type="button" mat-button style="background-color: transparent; color: black;"
+                (click)="addMoreConsult()">
+                <mat-icon>add</mat-icon>
+                Add more consultation
+            </button>
+        </div>
+        <div class="consult-attachment-bottom">
+            <button mat-button class="consult-attachment-save-button"
+                [disabled]="this.consultForm.invalid">Submit</button>
+        </div>
+    </form>
+</div>

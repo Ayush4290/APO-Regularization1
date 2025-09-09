@@ -1,0 +1,14 @@
+<div class="main-layout">
+    <div class="new-request" *ngIf="typeId==reqMsg.New">
+        <img style="width: 320px;" src="\assets\images\new-req.png">
+        <h2>New Request</h2>
+        <h5>Welcome! You're about to submit your first request.</h5>
+        <button mat-button class="mat-button button-submit" style="width: 240px;" (click)="newRequestDialog()">NEW REQUEST</button>
+    </div>
+    <div class="new-request" *ngIf="typeId==reqMsg.Success">
+        <img style="width: 320px;" src="\assets\images\email-icon.png">
+        <h2>Application Submitted Successfuly.</h2>
+        <h5>Thans you! Your form has beed submitted.</h5>
+        <button mat-button class="mat-button button-submit" style="width: 240px;" (click)="submittedSuccessfuly()">CONTINUE</button>
+    </div>
+</div>

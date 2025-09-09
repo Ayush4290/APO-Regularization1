@@ -1,0 +1,35 @@
+<div class="show-attachment">
+    <div class="show-attachment-top">
+        <label class="show-attachment-title">Attachment</label>
+        <button mat-icon-button color="accent" class="circle-button mat-icon-button-close" (click)="onCancelClick()">
+            <img src="\assets\images\close-icon.png">
+        </button>
+    </div>
+    <div mat-dialog-content class="show-attachment-main">
+        <div *ngFor="let groupedFile of groupedFiles | keyvalue; let i = index">
+            <label class="show-attachment-type-title">{{getDocumentType(groupedFile.key)}}</label>
+            <div class="show-attachment-content" *ngFor="let file of groupedFile.value">
+                <div class="main-layout-flex">
+                    <div class="main-layout-flex">
+                        <span class="show-attachment-name">{{file.fileName}}</span>
+                    </div>
+                    <div class="attacment-icons" >
+                        <div class="main-layout-flex" style="margin-left: 50px;">
+                            <span class="show-attachment-date">
+                                {{this.datePipe.transform(file.createdDt,dtconstant.dtFormat)}}
+                            </span>
+                            <img src="\assets\images\open-attachment.png"
+                                (click)="openFileInNewTab(file.fileContent, file.fileType)" class="attachment-icon">
+                            <img src="\assets\images\download-attachment.png"
+                                (click)="downloadFiles(file.fileContent, file.fileType, file.fileName)"
+                                class="attachment-icon">
+                            <img *ngIf="this.data.orderNo" src="\assets\images\delete-attachment.png"
+                                (click)="deleteAttach(file.fileId, files[0].createdBy)" class="attachment-icon">
+                        </div>
+                    </div>
+                </div>
+                <span class="show-attachment-description">{{file.fileDesc}}</span>
+            </div>
+        </div>
+    </div>
+</div>

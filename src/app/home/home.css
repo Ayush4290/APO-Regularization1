@@ -1,0 +1,40 @@
+.notification {
+  position: relative;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.notification-toolbar {
+  position: absolute;
+  top: 60px; /* adjust according to toolbar height */
+  right: 20px;
+  width: 250px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  padding: 10px;
+  z-index: 1000;
+}
+
+.notification-toolbar h4 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.notification-toolbar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.notification-toolbar ul li {
+  padding: 6px 0;
+  font-size: 13px;
+  border-bottom: 1px solid #eee;
+}
+
+.notification-toolbar ul li:last-child {
+  border-bottom: none;
+}

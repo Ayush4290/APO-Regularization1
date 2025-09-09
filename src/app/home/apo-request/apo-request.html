@@ -1,0 +1,277 @@
+<div class="main-layout">
+    <form class="form-group" [formGroup]="apoForm" (ngSubmit)="onSubmit(enumStatus.SUBMITTED)">
+        <span class="new-request-header-title">Details of Personnel</span>
+        <div class="form-row">
+            <div class="form-row-field">
+                <label class="mat-lable-text">Personnel ID<span class="required-star">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width ">
+                    <input matInput #PersonnelId class="mat-input-text-font background-color" id="personnelId"
+                        formControlName="personnelId" (change)="getPersonnelByIdAsync()"
+                        placeholder="Enter personnel ID" [readonly]="isPersonnel" maxlength="25">
+                    <mat-error *ngIf="fc['personnelId']?.invalid && submitted">
+                        <span *ngIf="fc['personnelId']?.errors?.['required']">Enter personnel ID</span>
+                    </mat-error>
+                    <mat-error *ngIf="fc['personnelName']?.invalid && submitted">
+                        <span *ngIf="fc['personnelName']?.errors?.['required']">Enter valid personnel ID.</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-row-field">
+                <label class="mat-lable-text">Personnel Name<span class="required-star">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width">
+                    <input matInput class="mat-input-text-font background-color" id="personnelName"
+                        formControlName="personnelName" placeholder="Enter personnel name" [readonly]="true">
+                </mat-form-field>
+            </div>
+            <div class="form-row-field">
+                <label class="mat-lable-text">Name of Department<span class="required-star">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width">
+                    <input matInput class="background-color" id="department" formControlName="department"
+                        placeholder="Enter name of department" [readonly]="true">
+                </mat-form-field>
+            </div>
+            <div class="form-row-field">
+                <label class="mat-lable-text">Name of Service<span class="required-star">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width">
+                    <input matInput class="mat-input-text-font background-color" id="nameOfService"
+                        formControlName="nameOfService" placeholder="Enter name of service" [readonly]="true">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="dotted-line"></div>
+        <span class="new-request-header-title">Post & Department Details</span>
+        <div class="form-row">
+            <div class="form-row-field">
+                <label class="mat-lable-text">APO Order Number<span class="required-star">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width">
+                    <input #apoOrderNumber matInput id="apoOrderNumber" class="mat-input-text-font"
+                        formControlName="apoOrderNumber" placeholder="Enter APO number" maxlength="25">
+                    <mat-error *ngIf="fc['apoOrderNumber']?.invalid && submitted">
+                        <span *ngIf="fc['apoOrderNumber']?.errors?.['required']">Enter APO number</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-row-field">
+                <label class="mat-lable-text">APO Order Date<span class="required-star">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width">
+                    <input id="apoOrderDate" matInput class="mat-input-text-font" [matDatepicker]="pickerApoOrderDate"
+                        formControlName="apoOrderDate" [max]="dateTimeMax" (dateChange)="dateValidate()"
+                        placeholder="Select APO order date">
+                    <mat-datepicker-toggle matSuffix [for]="pickerApoOrderDate"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerApoOrderDate></mat-datepicker>
+                    <mat-error *ngIf="fc['apoOrderDate']?.invalid && submitted">
+                        Select APO order date
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-row-field">
+                <label class="mat-lable-text">APO Date<span class="required-star">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width">
+                    <input id="apoDate" matInput class="mat-input-text-font" [matDatepicker]="pickerApoDate"
+                        formControlName="apoDate" [max]="dateTimeMax" (dateChange)="dateValidate()"
+                        placeholder="Select APO date">
+                    <mat-datepicker-toggle matSuffix [for]="pickerApoDate"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerApoDate></mat-datepicker>
+                    <mat-error *ngIf="fc['apoDate']?.invalid && submitted">
+                        Select APO date
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-row-field">
+                <label class="mat-lable-text">APO Document<span class="required-star">*</span></label>
+                <div class="main-layout-flex">
+                    <div class="attachment-box-wrapper">
+                        <label id="apoDocument" class="attachment-box" (click)="addAttachmentDialog('AO')">
+                            <mat-icon>attach_file</mat-icon> Add Attachment
+                        </label>
+                        <input matInput formControlName="apoDocument" style="display: none;">
+                    </div>
+                    <button type="button" *ngIf="this.apoForm.get('apoDocument')?.value"
+                        class="attachment-view-button button-discard" (click)="showAttachmentDialog('AO')">View
+                        ({{this.apoForm.get('apoDocument')?.value?.length}})</button>
+                </div>
+                <mat-error *ngIf="fc['apoDocument']?.invalid && submitted">
+                    <span *ngIf="fc['apoDocument']?.errors?.['required']">Attach APO document</span>
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-row-field">
+                <label class="mat-lable-text">Posting Order Number<span class="required-star">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width">
+                    <input id="postingOrderNumber" matInput class="mat-input-text-font"
+                        formControlName="postingOrderNumber" placeholder="Enter posting order number" maxlength="25">
+                    <mat-error *ngIf="fc['postingOrderNumber']?.invalid && submitted">
+                        <span *ngIf="fc['postingOrderNumber']?.errors?.['required']">Enter posting order number</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-row-field">
+                <label class="mat-lable-text">Posting Order Date<span class="required-star">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width">
+                    <input id="postingOrderDate" matInput class="mat-input-text-font"
+                        [matDatepicker]="pickerPostingOrderDate" [max]="dateTimeMax" formControlName="postingOrderDate"
+                        placeholder="Select posting order date" (dateChange)="dateValidate()">
+                    <mat-datepicker-toggle matSuffix [for]="pickerPostingOrderDate"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerPostingOrderDate></mat-datepicker>
+                    <mat-error *ngIf="fc['postingOrderDate']?.invalid && submitted">
+                        Select posting order date
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-row-field">
+                <label class="mat-lable-text">Joining Date<span class="required-star">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width">
+                    <input id="joiningDate" matInput class="mat-input-text-font" [matDatepicker]="pickerJoiningDate"
+                        formControlName="joiningDate" [max]="dateTimeMax" (dateChange)="dateValidate()"
+                        placeholder="Select joining date">
+                    <mat-datepicker-toggle matSuffix [for]="pickerJoiningDate"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerJoiningDate></mat-datepicker>
+                    <mat-error *ngIf="fc['joiningDate']?.invalid && submitted">
+                        Select joining date
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-row-field">
+                <label class="mat-lable-text">Posting Document<span class="required-star">*</span></label>
+                <div class="main-layout-flex">
+                    <div class="attachment-box-wrapper">
+                        <label id="postingDocument" class="attachment-box" (click)="addAttachmentDialog('PO')">
+                            <mat-icon>attach_file</mat-icon> Add Attachment
+                        </label>
+                        <input matInput formControlName="postingDocument" style="display: none;">
+                    </div>
+                    <button type="button" *ngIf="this.apoForm.get('postingDocument')?.value"
+                        class="attachment-view-button button-discard" (click)="showAttachmentDialog('PO')">View
+                        ({{this.apoForm.get('postingDocument')?.value?.length}})</button>
+                </div>
+                <mat-error *ngIf="fc['postingDocument']?.invalid && submitted">
+                    <span *ngIf="fc['postingDocument']?.errors?.['required']">Attach posting document</span>
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-row-field">
+                <label class="mat-lable-text">Previous Post<span class="required-star">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width">
+                    <mat-select id="previousPost" formControlName="previousPost" placeholder="Select previous post">
+                        <mat-option *ngFor="let p of postlist" [value]="p.postId">
+                            {{p.postName}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="fc['previousPost']?.invalid && submitted">
+                        Select previous post
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-row-field">
+                <label class="mat-lable-text">New Post<span class="required-star">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width">
+                    <mat-select id="newPost" formControlName="newPost" placeholder="Select new post">
+                        <mat-option *ngFor="let p of postlist" [value]="p.postId">
+                            {{p.postName}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="fc['newPost']?.invalid && submitted">
+                        Select new post
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-row-field">
+                <label class="mat-lable-text">APO Duration (Days)<span class="required-star">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width">
+                    <input type="number" id="apoDuration" class="mat-input-text-font" matInput
+                        formControlName="apoDuration" placeholder="Enter APO duration in days" min="1" max="999">
+                    <mat-error *ngIf="fc['apoDuration']?.invalid && submitted">
+                        <span *ngIf="fc['apoDuration']?.errors?.['apoDuration']">Enter APO duration in days</span>
+                    </mat-error>
+                    <mat-error *ngIf="fc['apoDuration']?.errors?.['max'] || fc['apoDuration']?.errors?.['min']">
+                        The apo duration cannot be less than 1 & greater than 999
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-row-field">
+                <label class="mat-lable-text">Joining Document<span class="required-star">*</span></label>
+                <div class="main-layout-flex">
+                    <div class="attachment-box-wrapper">
+                        <label id="joiningDocument" class="attachment-box" (click)="addAttachmentDialog('JO')">
+                            <mat-icon>attach_file</mat-icon> Add Attachment
+                        </label>
+                        <input matInput formControlName="joiningDocument" style="display: none;">
+                    </div>
+                    <button type="button" type="button" *ngIf="this.apoForm.get('joiningDocument')?.value"
+                        class="attachment-view-button button-discard" (click)="showAttachmentDialog('JO')">View
+                        ({{this.apoForm.get('joiningDocument')?.value?.length}})</button>
+                </div>
+                <mat-error *ngIf="fc['joiningDocument']?.invalid && submitted">
+                    <span *ngIf="fc['joiningDocument']?.errors?.['required']">Attach joining document</span>
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-row-field">
+                <label class="mat-lable-text">APO Headquarters<span class="required-star">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width">
+                    <mat-select id="apoHeadquarters" formControlName="apoHeadquarters" placeholder="Select headquarter">
+                        <mat-option *ngFor="let head of headlist" [value]="head.hqId">
+                            {{head.hqName}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="fc['newPost']?.invalid && submitted">
+                        Select headquarter
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-row-field"></div>
+            <div class="form-row-field"></div>
+            <div class="form-row-field"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-row-field">
+                <label class="mat-lable-text">APO Reason Details<span class="required-star">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width" id="textAreaMain">
+                    <textarea id="apoReasonDetails" class="mat-input-text-font" matInput
+                        formControlName="apoReasonDetails" placeholder="Enter APO reason"></textarea>
+                    <mat-error *ngIf="fc['apoReasonDetails']?.invalid && submitted">
+                        <span *ngIf="fc['apoReasonDetails']?.errors?.['required']">Enter APO reason</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+
+
+        <div class="form-row">
+            <div class="form-row-field" style="flex: 3 !important;">
+                <label class="mat-lable-text">Additional Comments<span class="required-star">*</span></label>
+                <mat-form-field appearance="outline" class="example-full-width" id="textAreaMain">
+                    <textarea id="additionalComments" class="mat-input-text-font" matInput
+                        formControlName="additionalComments" placeholder="Enter comment"></textarea>
+                    <mat-error *ngIf="fc['additionalComments']?.invalid && submitted">
+                        <span *ngIf="fc['additionalComments']?.errors?.['required']">Enter comment</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-row-field" style="flex: 1 !important;">
+                <label class="mat-lable-text">Additional Documents</label>
+                <div class="main-layout-wrap">
+                    <div class="attachment-box-wrapper">
+                        <label id="alldocument" class="attachment-box-other" (click)="addAttachmentDialog('A')">
+                            <mat-icon>attach_file</mat-icon> Add Attachment
+                        </label>
+                        <input matInput formControlName="otherDocument" style="display: none;">
+                    </div>
+                    <button type="button" *ngIf="this.apoForm.get('otherDocument')?.value"
+                        class="attachment-view-button-other button-discard" (click)="showAttachmentDialog('A')">View
+                        ({{this.apoForm.get('otherDocument')?.value?.length}})</button>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="button" mat-button class="mat-button button-discard" (click)="onDiscard()">Discard</button>
+            <button type="button" mat-button class="mat-button button-reject" (click)="onSubmit(enumStatus.DRAFT)">Save
+                as Draft</button>
+            <button mat-button class="mat-button button-submit">Submit</button>
+        </div>
+    </form>
+</div>

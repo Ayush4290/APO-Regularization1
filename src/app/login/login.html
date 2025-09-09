@@ -1,0 +1,35 @@
+<div class="login-body">
+  <mat-card class="login-main-div login-card">
+    <mat-card-header class="login-header">
+      <mat-card-title class="login-title">Login</mat-card-title> 
+    </mat-card-header>
+
+    <mat-card-content class="login-content">
+      <form [formGroup]="loginFG" (submit)="onSubmit()">
+
+        <mat-form-field appearance="fill" class="full-width login-field">
+          <mat-label>User Name</mat-label>
+          <input matInput type="username" id="username" formControlName="username" 
+                 placeholder="Enter your username" required />
+          <mat-error *ngIf="fc['username']?.invalid">
+            <span *ngIf="fc['username']?.errors?.['required']">Enter username.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width login-field">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" id="password" formControlName="password" 
+                 placeholder="Enter your password" required />
+          <mat-error *ngIf="fc['password']?.invalid">
+            <span *ngIf="fc['password']?.errors?.['required']">Enter password.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <div class="actions login-actions">
+          <button mat-raised-button color="primary" type="submit" class="btn-login">Login</button>
+          <button mat-button color="accent" type="button" class="btn-forgot">Forgot Password?</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

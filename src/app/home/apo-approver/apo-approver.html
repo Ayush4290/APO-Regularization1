@@ -1,0 +1,175 @@
+<div class="main-layout-flex">
+    <div class="main-layout-flex audit">
+        <app-apo-history-attachments [auditHistory]='auditHistory'
+            style="width: 100% !important;"></app-apo-history-attachments>
+    </div>
+    <div class="main-layout-flex pending">
+        <form class="form-group" [formGroup]="apoForm">
+            <span class="new-request-header-title">Details of Personnel</span>
+            <div class="form-row">
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Personnel ID</label>
+                    <mat-form-field appearance="outline" class="example-full-width ">
+                        <input matInput class="mat-input-text-font background-color" id="personnelId"
+                            formControlName="personnelId" [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Personnel Name</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input matInput class="mat-input-text-font background-color" id="personnelName"
+                            formControlName="personnelName" [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Name of Department</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input matInput class="background-color" id="department" formControlName="department"
+                            placeholder="Enter department" [readonly]="true">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Name of Service</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input matInput class="mat-input-text-font background-color" id="nameOfService"
+                            formControlName="nameOfService" [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                </div>
+                <div class="form-row-field">
+                </div>
+            </div>
+            <div class="dotted-line"></div>
+            <span class="new-request-header-title">Post & Department Details</span>
+            <div class="form-row">
+                <div class="form-row-field">
+                    <label class="mat-lable-text">APO Order Number</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input matInput id="apoOrderNumber" class="mat-input-text-font" formControlName="apoOrderNumber"
+                            [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">APO Order Date</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="apoOrderDate" matInput class="mat-input-text-font" formControlName="apoOrderDate"
+                            [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">APO Date</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="apoDate" matInput class="mat-input-text-font" formControlName="apoDate"
+                            [readonly]="true">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Posting Order Number</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="postingOrderNumber" matInput class="mat-input-text-font"
+                            formControlName="postingOrderNumber" [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Posting Order Date</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="postingOrderDate" matInput class="mat-input-text-font"
+                            formControlName="postingOrderDate" [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Joining Date</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="joiningDate" matInput class="mat-input-text-font" formControlName="joiningDate"
+                            [readonly]="true">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Previous Post</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="previousPost" matInput class="mat-input-text-font" formControlName="previousPost"
+                            [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">New Post</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="newPost" matInput class="mat-input-text-font" formControlName="newPost"
+                            [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">APO Duration (Days)</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="apoDuration" class="mat-input-text-font" matInput formControlName="apoDuration"
+                            [readonly]="true">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-row-field">
+                    <label class="mat-lable-text">APO Headquarters</label>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <input id="apoHeadquarters" class="mat-input-text-font" matInput
+                            formControlName="apoHeadquarters" [readonly]="true">
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field"></div>
+                <div class="form-row-field"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-row-field">
+                    <label class="mat-lable-text">APO Reason Details</label>
+                    <mat-form-field appearance="outline" class="example-full-width" id="textAreaMain">
+                        <textarea id="apoReasonDetails" class="mat-input-text-font" matInput
+                            formControlName="apoReasonDetails" [readonly]="true"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-row-field" style="flex: 2 !important;">
+                    <label class="mat-lable-text">Additional Comments<span class="required-star">*</span></label>
+                    <mat-form-field appearance="outline" class="example-full-width" id="textAreaMain">
+                        <textarea id="additionalComments" class="mat-input-text-font" matInput
+                            formControlName="additionalComments" placeholder="Enter comment"></textarea>
+                        <mat-error *ngIf="fc['additionalComments']?.invalid && submitted">
+                            <span *ngIf="fc['additionalComments']?.errors?.['required']">Enter comment.</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-row-field">
+                    <label class="mat-lable-text">Additional Documents</label>
+                    <div class="main-layout-wrap">
+                        <div class="attachment-box-wrapper">
+                            <label id="alldocument" class="attachment-box-other" (click)="addAttachmentDialog('A')">
+                                <mat-icon>attach_file</mat-icon> Add Attachment
+                            </label>
+                            <input matInput formControlName="otherDocument" style="display: none;">
+                        </div>
+                        <button type="button" *ngIf="this.apoForm.get('otherDocument')?.value"
+                            class="attachment-view-button-other button-discard" (click)="showAttachmentDialog('A')">View
+                            ({{this.apoForm.get('otherDocument')?.value?.length}})</button>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="roleId==enumRole.REVIEWER || roleId==enumRole.APPROVER" class="form-actions">
+                <button type="button" mat-button class="mat-button button-return" (click)="onReturn()">Return</button>
+                <button type="button" mat-button class="mat-button button-reject" (click)="onReject()">Reject</button>
+                <button type="button" mat-button class="mat-button button-submit" (click)="onApprove()">Approve</button>
+                <button type="button" mat-button class="mat-button button-discard"
+                    (click)="onConsult()">Consult</button>
+            </div>
+            <div *ngIf="roleId==enumRole.CONSULT" class="form-actions">
+                <button type="button" mat-button class="mat-button button-submit"
+                    (click)="onResponeSubmit()">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

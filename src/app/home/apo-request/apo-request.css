@@ -1,0 +1,46 @@
+/* Section wrapper */
+.doc-attach-section {
+  display: flex;
+  flex-direction: column; /* Attach upar, View niche */
+  gap: 8px; /* gap between them */
+  align-items: flex-start; /* left align */
+      width: 331px !important;
+}
+
+/* Attach Button */
+.doc-attach-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background-color: #f9f9f9;
+  border: 1px dashed #bbb;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #444;
+  width: 100%;          /* take full width */
+  justify-content: center;
+  text-align: center;
+  
+}
+
+/* View Button */
+.doc-view-btn {
+  padding: 9px 14px;
+  border-radius: 6px;
+  border: 1px solid #ff6600;
+  background: #fff7f2;
+  color: #ff6600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;          /* take full width */
+  text-align: center;
+  height: 39px;
+}
+
+.doc-view-btn:hover {
+  background: #ff6600;
+  color: #fff;
+}

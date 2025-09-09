@@ -1,0 +1,300 @@
+{
+  "status": [
+    {
+      "statusId": 1,
+      "statusName": "DRAFT",
+      "active": "true",
+      "id": "6843"
+    },
+    {
+      "statusId": 2,
+      "statusName": "SUBMITTED",
+      "active": "true",
+      "id": "ca13"
+    },
+    {
+      "statusId": 3,
+      "statusName": "PENDING",
+      "active": "true",
+      "id": "bbac"
+    },
+    {
+      "statusId": 4,
+      "statusName": "RETURNED",
+      "active": "true",
+      "id": "e304"
+    },
+    {
+      "statusId": 5,
+      "statusName": "REJECTED",
+      "active": "true",
+      "id": "4407"
+    },
+    {
+      "statusId": 6,
+      "statusName": "APPROVED",
+      "active": "true",
+      "id": "dfad"
+    },
+    {
+      "statusId": 7,
+      "statusName": "CONSULT",
+      "active": "true",
+      "id": "4541"
+    }
+  ],
+  "posting": [
+    {
+      "postId": 1,
+      "postName": "Clerk",
+      "active": "true",
+      "id": "077d"
+    },
+    {
+      "postId": 2,
+      "postName": "Accounter",
+      "active": "true",
+      "id": "548e"
+    },
+    {
+      "postId": 3,
+      "postName": "Manager",
+      "active": "true",
+      "id": "2005"
+    }
+  ],
+  "department": [
+    {
+      "departmentId": 1,
+      "departmentName": "Home Department",
+      "active": "true",
+      "id": "db55"
+    }
+  ],
+  "headquaters": [
+    {
+      "headquaterId": 1,
+      "headquaterName": "Headquaters",
+      "active": "true",
+      "id": "e483"
+    }
+  ],
+  "postLevel": [
+    {
+      "empId": "EMP-12345",
+      "level": "L1",
+      "active": "true",
+      "id": "6513"
+    },
+    {
+      "empId": "EMP-12346",
+      "level": "L1",
+      "active": "true",
+      "id": "aa3a"
+    },
+    {
+      "empId": "EMP-12347",
+      "level": "L2",
+      "active": "true",
+      "id": "de83"
+    },
+    {
+      "empId": "EMP-12348",
+      "level": "L2",
+      "active": "true",
+      "id": "038d"
+    },
+    {
+      "empId": "EMP-12349",
+      "level": "L3",
+      "active": "true",
+      "id": "b72f"
+    }
+  ],
+  "user": [
+    {
+      "id": "EMP-12345",
+      "email": "manoj@test.com",
+      "username": "manoj",
+      "password": "12345",
+      "createdBy": "1",
+      "createdDate": ""
+    },
+    {
+      "id": "EMP-12346",
+      "email": "amit@test.com",
+      "username": "amit",
+      "password": "12345",
+      "createdBy": "1",
+      "createdDate": ""
+    },
+    {
+      "id": "EMP-12347",
+      "email": "anu@test.com",
+      "username": "anu",
+      "password": "12345",
+      "createdBy": "1",
+      "createdDate": ""
+    },
+    {
+      "id": "EMP-12348",
+      "email": "sandhiya@test.com",
+      "username": "sandhiya",
+      "password": "12345",
+      "createdBy": "1",
+      "createdDate": ""
+    },
+    {
+      "id": "EMP-12349",
+      "email": "susmita@test.com",
+      "username": "susmita",
+      "password": "12345",
+      "createdBy": "1",
+      "createdDate": ""
+    }
+  ],
+  "personnelDetails": [
+    {
+      "id": "1",
+      "userId": "EMP-12345",
+      "name": "Manoj Kumar",
+      "gender": "Male",
+      "age": 40,
+      "address": "",
+      "department": {
+        "departmentId": 1,
+        "departmentName": "Home Department",
+        "active": "true"
+      },
+      "service": {
+        "serviceId": 1,
+        "serviceName": "RAS",
+        "serviceFullName": "Rajasthan Administrative Service",
+        "active": "true"
+      },
+      "post": {
+        "postId": 1,
+        "postName": "Clerk",
+        "active": "true"
+      },
+      "active": "true",
+      "dateOfJoin": "",
+      "updateId": "",
+      "updateDate": ""
+    },
+    {
+      "id": "2",
+      "userId": "EMP-12346",
+      "name": "Amit Jha",
+      "gender": "Male",
+      "age": 30,
+      "address": "",
+      "department": {
+        "departmentId": 1,
+        "departmentName": "Home Department",
+        "active": "true"
+      },
+      "service": {
+        "serviceId": 1,
+        "serviceName": "RAS",
+        "serviceFullName": "Rajasthan Administrative Service",
+        "active": "true"
+      },
+      "post": {
+        "postId": 1,
+        "postName": "Clerk",
+        "active": "true"
+      },
+      "active": "true",
+      "dateOfJoin": "",
+      "updateId": "",
+      "updateDate": ""
+    },
+    {
+      "id": "3",
+      "userId": "EMP-12347",
+      "name": "Anu Prasad",
+      "gender": "Male",
+      "age": 52,
+      "address": "",
+      "department": {
+        "departmentId": 1,
+        "departmentName": "Home Department",
+        "active": "true"
+      },
+      "service": {
+        "serviceId": 1,
+        "serviceName": "RAS",
+        "serviceFullName": "Rajasthan Administrative Service",
+        "active": "true"
+      },
+      "post": {
+        "postId": 2,
+        "postName": "Clerk",
+        "active": "true"
+      },
+      "active": "true",
+      "dateOfJoin": "",
+      "updateId": "",
+      "updateDate": ""
+    },
+    {
+      "id": "4",
+      "userId": "EMP-12348",
+      "name": "Sandhiya Kumari",
+      "gender": "Female",
+      "age": 37,
+      "address": "",
+      "department": {
+        "departmentId": 1,
+        "departmentName": "Home Department",
+        "active": "true"
+      },
+      "service": {
+        "serviceId": 1,
+        "serviceName": "RAS",
+        "serviceFullName": "Rajasthan Administrative Service",
+        "active": "true"
+      },
+      "post": {
+        "postId": 2,
+        "postName": "Clerk",
+        "active": "true"
+      },
+      "active": "true",
+      "dateOfJoin": "",
+      "updateId": "",
+      "updateDate": ""
+    },
+    {
+      "id": "5",
+      "userId": "EMP-12349",
+      "name": "Susmita Panday",
+      "gender": "Female",
+      "age": 43,
+      "address": "",
+      "department": {
+        "departmentId": 1,
+        "departmentName": "Home Department",
+        "active": "true"
+      },
+      "service": {
+        "serviceId": 1,
+        "serviceName": "RAS",
+        "serviceFullName": "Rajasthan Administrative Service",
+        "active": "true"
+      },
+      "post": {
+        "postId": 3,
+        "postName": "Clerk",
+        "active": "true"
+      },
+      "active": "true",
+      "dateOfJoin": "",
+      "updateId": "",
+      "updateDate": ""
+    }
+  ],
+  "apo-docs":[],
+  "apo-orders": []
+}
