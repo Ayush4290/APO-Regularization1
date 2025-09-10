@@ -173,16 +173,17 @@
     </div>
 
     <!-- Backdrop to close dropdown -->
-    <div
-      *ngIf="showDepartmentDropdown || showUserDropdown"
-      class="dropdown-backdrop"
-      (click)="closeDropdown()"
-    ></div>
-    <div
-      *ngIf="showSortDropdown"
-      class="dropdown-backdrop"
-      (click)="showSortDropdown = false"
-    ></div>
+   <div
+  *ngIf="showDepartmentDropdown || showUserDropdown"
+  class="dropdown-backdrop"
+  (click)="closeDropdown()"
+></div>
+
+<div
+  *ngIf="showSortDropdown"
+  class="dropdown-backdrop"  
+  (click)="showSortDropdown = false"
+></div>
 
     <div mat-dialog-content>
       <div *ngFor="let hist of auditHistoryList">
