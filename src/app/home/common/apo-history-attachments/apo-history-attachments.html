@@ -185,7 +185,7 @@
   (click)="showSortDropdown = false"
 ></div>
 
-    <div mat-dialog-content>
+    <div mat-dialog-content class="sidemainDiv" style="display: flex; flex-direction: column; gap: 10px;">
       <div *ngFor="let hist of auditHistoryList">
         <div class="audit-attachment-content">
           <div class="main-layout-flex">
@@ -421,7 +421,7 @@
       (click)="showSortDropdown = false"
     ></div>
 
-    <div mat-dialog-content>
+    <div mat-dialog-content class="sidemainDiv" >
       <div *ngFor="let attachment of auditAttachmentList">
         <div class="audit-attachment-user-details">
           <div class="main-layout-flex">
@@ -474,6 +474,7 @@
                   datePipe.transform(file?.createdDt, dtconstant.dtFormat)
                 }}</span
               >
+              <div class="icons-main">
               <img
                 src="/assets/images/open-attachment.png"
                 (click)="
@@ -495,6 +496,7 @@
                 "
                 style="cursor: pointer"
               />
+              </div>
             </div>
             <div class="main-layout-flex">
               <span class="audit-attachment-description">{{
@@ -511,9 +513,7 @@
   <ng-container *ngIf="preview?.isPdf; else imagePreview">
     <div class="zoom-controls">
       <button type="button" (click)="zoomOut()">-</button>
-      <span style="padding: 8px 12px; font-size: 14px; color: #666; user-select: none;">
-        {{ (zoomLevel * 100) | number:'1.0-0' }}%
-      </span>
+     
       <button type="button" (click)="zoomIn()">+</button>
     </div>
     <div class="pdf-container">

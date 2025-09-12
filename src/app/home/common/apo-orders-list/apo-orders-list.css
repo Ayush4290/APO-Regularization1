@@ -9,6 +9,9 @@ th.text-align-center {
   text-align: center;
   white-space: nowrap;
 }
+span.search-icon-wrapper {
+    margin-top: -14px !important;
+}
 
 .circle-button {
   width: 36px;
@@ -42,9 +45,6 @@ th.text-align-center {
   margin-bottom: 20px;
 }
 
-.pagination-container .mat-mdc-paginator-container {
-  justify-content: center;
-}
 
 
 .filter-section-right {
@@ -82,14 +82,15 @@ th.text-align-center {
 }
 
 .filter-dialog {
-  background: white;
+  background: #fff;
   border-radius: 8px;
-  max-width: 950px; 
+  max-width: 800px;
   width: 100%;
-  height: 80%;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  margin-top: 50px; 
-     margin-right: 252px
+  max-height: calc(100vh - 40px); /* fit inside viewport */
+  overflow: auto;                  /* internal scrolling if content large */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  margin: auto;
+  justify-content: center ;
 }
 
 .filter-header {
@@ -121,8 +122,7 @@ th.text-align-center {
 .filter-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 24px;
+  gap: 12px;
 }
 
 .filter-section {
@@ -133,7 +133,7 @@ th.text-align-center {
 .filter-section label {
   display: block;
   margin-bottom: 8px;
-  font-weight: 500;
+  font-weight: normal;
   color: #555;
   font-size: 14px;
 }
@@ -167,23 +167,26 @@ th.text-align-center {
 .apply-btn {
   min-width: 150px;
   height: 40px;
-  border-radius: 6px;
+  border-radius: 6px !important;
   font-weight: 500;
   text-transform: none;
   font-size: 14px;
   box-shadow: none;
+  border: 1px solid #EA781A;
 }
 
 .clear-all-btn {
   background-color: #fff;
   color: var(--primary-orange);
-  border: 1px solid var(--primary-orange);
+  border: 1px solid #EA781A !important;
+
 }
 
 .apply-btn {
   background-color: var(--primary-orange);
   color: white;
   border: 1px solid var(--primary-orange);
+
 }
 
 .status-button {

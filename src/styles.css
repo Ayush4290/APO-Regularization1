@@ -1,5 +1,5 @@
 :root {
-  --mat-typography-font-family: 'Roboto', sans-serif;
+  --mat-typography-font-family: "Roboto", sans-serif;
 }
 
 html,
@@ -7,12 +7,37 @@ body {
   height: auto;
   margin: 0;
   background-color: #fafafa;
-
 }
 
 .home-container {
   background-color: #f5f5f5 !important;
 }
+
+/* 12-09-25 */
+.mat-mdc-paginator-page-size-label {
+    font-size: 15px;
+}
+.mat-mdc-paginator-range-label {
+    font-size: 15px;
+    margin: 0 !important;
+}
+.mat-mdc-table thead .mat-mdc-header-row {
+    height: 40px !important;
+}
+.sidemainDiv {
+    height: 85vh;
+    overflow-y: auto !important;
+    padding-right: 10px;
+}
+
+/* 12-09-25 */
+
+
+/* 10-09-25 */
+.icons-main {
+  display: flex;
+}
+/* 10-09-25 */
 
 /* start css - 05-09  */
 .show-apo-num .main-layout-flex {
@@ -32,7 +57,6 @@ body {
 
 .mat-mdc-text-field-wrapper.mdc-text-field--filled {
   background: #f5f5f5;
-  /* show background when input has value */
 }
 
 .mat-mdc-text-field-wrapper:has(input:not(:placeholder-shown)) {
@@ -41,7 +65,6 @@ body {
 
 .mat-mdc-text-field-wrapper.ng-valid.ng-dirty {
   background: #f5f5f5;
-  /* jab value hai */
 }
 
 .mat-mdc-text-field-wrapper {
@@ -62,19 +85,17 @@ body {
 
 .audit .status-button.rejected-button {
   background-color: transparent !important;
-  color: #E22D20 !important;
+  color: #e22d20 !important;
   border: none !important;
   padding: 0 !important;
 }
 
 .audit .status-button.submitted-button {
   background-color: transparent !important;
-  color: #5A36BF !important;
+  color: #5a36bf !important;
   border: none !important;
   padding: 0 !important;
 }
-
-
 
 .audit .status-button.draft-button {
   background-color: transparent !important;
@@ -92,30 +113,26 @@ body {
 
 .audit .status-button.returned-button {
   background-color: transparent !important;
-  color: #1F87AD !important;
+  color: #1f87ad !important;
   border: none !important;
   padding: 0 !important;
 }
 
 .audit .status-button.consult-button {
   background-color: transparent !important;
-  color: #C46315 !important;
+  color: #c46315 !important;
   border: none !important;
   padding: 0 !important;
 }
 
 .audit .status-button.responeded-button {
-  background-color: #E255F21A !important;
-  color: #9C23A9 !important;
+  background-color: #e255f21a !important;
+  color: #9c23a9 !important;
   border: none !important;
   padding: 0 !important;
 }
 
 /* end  css - 05-09  */
-
-
-
-
 
 /* Start Css 02-09-25 */
 .audit-attachment-content .main-layout-flex img {
@@ -137,15 +154,15 @@ body {
 }
 
 #popupInput .mdc-text-field--outlined .mdc-notched-outline__leading {
-  border-color: #DCDCDC;
+  border-color: #dcdcdc;
 }
 
 #popupInput .mdc-text-field--outlined .mdc-notched-outline__trailing {
-  border-color: #DCDCDC;
+  border-color: #dcdcdc;
 }
 
 #popupInput .mdc-text-field--outlined .mdc-notched-outline__notch {
-  border-color: #DCDCDC;
+  border-color: #dcdcdc;
 }
 
 .attacment-div img {
@@ -181,7 +198,10 @@ mat-dialog-container .add-attachment-main {
   max-width: 100px !important;
 }
 
-.audit-attachment-user-details .main-layout-flex .mdc-button .mdc-button__label {
+.audit-attachment-user-details
+  .main-layout-flex
+  .mdc-button
+  .mdc-button__label {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -192,7 +212,6 @@ mat-dialog-container .add-attachment-main {
   /* height: 110vh; */
   overflow-y: clip;
 }
-
 
 .mat-mdc-dialog-content.mdc-dialog__content::-webkit-scrollbar {
   width: 7px;
@@ -210,8 +229,6 @@ mat-dialog-container .add-attachment-main {
 }
 
 /* End Css 02-09-25 */
-
-
 
 /*  --------- Start Css  29-08-25 ----------- */
 .mdc-text-field--outlined {
@@ -235,17 +252,19 @@ mat-dialog-container .add-attachment-main {
 
 .mat-calendar-controls {
   margin: 0 !important;
-  background: #F6F6F6;
+  background: #f6f6f6;
   margin-bottom: 15px !important;
 }
 
-.home-container-layout .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mat-mdc-notch-piece {
-  border-color: #DCDCDC;
-
+.home-container-layout
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+  .mat-mdc-notch-piece {
+  border-color: #dcdcdc;
 }
 
-.mat-mdc-dialog-panel.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mat-mdc-notch-piece {
-  border-color: #DCDCDC;
+.mat-mdc-dialog-panel.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+  .mat-mdc-notch-piece {
+  border-color: #dcdcdc;
 }
 
 .mdc-notched-outline__trailing {
@@ -294,7 +313,14 @@ div.mat-mdc-select-panel {
 }
 
 .mat-mdc-paginator-container {
-  background: white;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 8px !important;
+  flex-wrap: wrap !important;
+  width: 100% !important;
+  min-height: var(--mat-paginator-container-size, 56px) !important;
+  background: white !important;
 }
 
 .mat-mdc-table .mdc-button {
@@ -340,7 +366,7 @@ div.mat-mdc-select-panel {
 }
 
 .mat-mdc-table thead {
-  background: #F4F5FA !important;
+  background: #f4f5fa !important;
 }
 
 .mat-mdc-table th {
@@ -350,6 +376,7 @@ div.mat-mdc-select-panel {
 .mat-mdc-table tbody tr td {
   border: none !important;
   border-bottom: 1px solid #e9e9e9 !important;
+  font-size: 13px;
 }
 
 /*  ----------- sTart css - 30-25 */
@@ -362,7 +389,6 @@ app-apo-orders .mdc-button {
   border-radius: 6px 6px 0 0 !important;
   border: 1px solid #00000005 !important;
 }
-
 
 /* Profile Dropdown Container */
 .profile-dropdown {
@@ -478,7 +504,6 @@ app-apo-orders .mdc-button {
   position: absolute;
   top: 99%;
   left: 0;
-
 }
 
 .search-head {
@@ -487,19 +512,19 @@ app-apo-orders .mdc-button {
 }
 
 .search-head .mat-mdc-form-field-infix {
-  padding: 10PX 0 !important;
+  padding: 10px 0 !important;
 }
 
 .search-container .mdc-text-field--outlined {
-  border-color: #DCDCDC !important;
+  border-color: #dcdcdc !important;
 }
 
 .search-container .mdc-notched-outline__trailing {
-  border-color: #DCDCDC !important;
+  border-color: #dcdcdc !important;
 }
 
 .search-container .mat-mdc-notch-piece.mdc-notched-outline__leading {
-  border-color: #DCDCDC !important;
+  border-color: #dcdcdc !important;
 }
 
 .mat-mdc-table thead .header-content {
@@ -507,23 +532,19 @@ app-apo-orders .mdc-button {
 }
 
 .mat-mdc-table thead th {
-  font-size: 13px !important;
+    font-size: 14px !important;
+    font-weight: 500;
 }
-
-
-
 
 /*  ------------- STart Product view  ------------*/
 /*  --------- End Css  29-08-25 ----------- */
-
-
 
 .home-navigation-bar {
   z-index: 1000;
   height: 56px !important;
   padding: 4px, 20px, 4px, 20px;
   gap: 32px;
-  background-color: #FFFFFF !important;
+  background-color: #ffffff !important;
   border-bottom-width: 1px;
   display: flex;
 }
@@ -556,7 +577,7 @@ app-apo-orders .mdc-button {
   letter-spacing: 0% !important;
   text-align: center !important;
   vertical-align: middle !important;
-  color: #6B7280 !important;
+  color: black !important;
   margin-top: 8px;
 }
 
@@ -569,8 +590,8 @@ app-apo-orders .mdc-button {
   letter-spacing: 0% !important;
   text-align: center !important;
   vertical-align: middle !important;
-  color: #E87B31 !important;
-  margin-top: 8px;
+  color: #e87b31 !important;
+  margin-top: 10px;
 }
 
 .back-button-icon {
@@ -599,14 +620,13 @@ app-apo-orders .mdc-button {
   border-radius: 2px !important;
   background-color: transparent !important;
   border: none !important;
-  color: #5C5C5C !important;
+  color: #5c5c5c !important;
 }
 
-
 .tab-mat-button.active {
-  color: #EA781A !important;
-  background-color: #FFFFFF !important;
-  border-bottom: 2px solid #EA781A !important;
+  color: #ea781a !important;
+  background-color: #ffffff !important;
+  border-bottom: 2px solid #ea781a !important;
   border: 1px solid #00000017 !important;
   border-bottom: 0 !important;
 }
@@ -622,7 +642,6 @@ app-apo-orders .mdc-button {
   vertical-align: middle !important;
   color: inherit !important;
 }
-
 
 .mat-button {
   width: 200px !important;
@@ -645,39 +664,39 @@ app-apo-orders .mdc-button {
 }
 
 .button-submit {
-  color: #FFFFFF !important;
-  background-color: #EA781A !important;
+  color: #ffffff !important;
+  background-color: #ea781a !important;
 }
 
 .button-discard {
-  border: 1px solid #EA781A !important;
-  color: #EA781A !important;
-  background-color: #FFFFFF !important;
+  border: 1px solid #ea781a !important;
+  color: #ea781a !important;
+  background-color: #ffffff !important;
 }
 
 .button-reject {
-  color: #FFFFFF !important;
-  background-color: #4F4F4F !important;
+  color: #ffffff !important;
+  background-color: #4f4f4f !important;
 }
 
 .button-return {
-  border: 1px solid #DCDCDC !important;
+  border: 1px solid #dcdcdc !important;
   color: #111827 !important;
-  background-color: #FFFFFF !important;
+  background-color: #ffffff !important;
 }
 
 .button-all {
-  color: #E87B31 !important;
-  background-color: #FFE5D3 !important;
+  color: #e87b31 !important;
+  background-color: #ffe5d3 !important;
 }
 
 .button-all.active {
-  border-bottom: 4px solid #E87B31 !important;
+  border-bottom: 4px solid #e87b31 !important;
 }
 
 .button-draft {
   color: #111827 !important;
-  background-color: #E5E7EB !important;
+  background-color: #e5e7eb !important;
 }
 
 .button-draft.active {
@@ -685,39 +704,39 @@ app-apo-orders .mdc-button {
 }
 
 .button-pending {
-  color: #FAAD14 !important;
-  background-color: #FFEBC4 !important;
+  color: #faad14 !important;
+  background-color: #ffebc4 !important;
 }
 
 .button-pending.active {
-  border-bottom: 4px solid #FAAD14 !important;
+  border-bottom: 4px solid #faad14 !important;
 }
 
 .button-submitted {
-  color: #8F44E6 !important;
-  background-color: #E6D0FF !important;
+  color: #8f44e6 !important;
+  background-color: #e6d0ff !important;
 }
 
 .button-submitted.active {
-  border-bottom: 4px solid #8F44E6 !important;
+  border-bottom: 4px solid #8f44e6 !important;
 }
 
 .button-rejected {
-  color: #FF4D4F !important;
-  background-color: #FFC8C9 !important;
+  color: #ff4d4f !important;
+  background-color: #ffc8c9 !important;
 }
 
 .button-rejected.active {
-  border-bottom: 4px solid #FF4D4F !important;
+  border-bottom: 4px solid #ff4d4f !important;
 }
 
 .button-approved {
-  color: #11A133 !important;
-  background-color: #B3E6C2 !important;
+  color: #11a133 !important;
+  background-color: #b3e6c2 !important;
 }
 
 .button-approved.active {
-  border-bottom: 4px solid #11A133 !important;
+  border-bottom: 4px solid #11a133 !important;
 }
 
 .button-container {
@@ -732,8 +751,8 @@ app-apo-orders .mdc-button {
   opacity: 1 !important;
   gap: 4px !important;
   border-radius: 6px !important;
-  color: #FFFFFF !important;
-  background-color: #E87B31 !important;
+  color: #ffffff !important;
+  background-color: #e87b31 !important;
   animation-duration: 0ms !important;
   font-family: Roboto !important;
   font-weight: 500 !important;
@@ -742,21 +761,18 @@ app-apo-orders .mdc-button {
   line-height: 22px !important;
   letter-spacing: 0% !important;
   margin-right: 65px;
-
 }
-
 
 .main-layout {
   opacity: 1 !important;
   gap: 24px !important;
   width: 94% !important;
   padding: 24px !important;
-  background-color: #FFFFFF !important;
+  background-color: #ffffff !important;
   /* border: 1px solid #c1c1c1; */
   /* margin: 30px 0; */
   border-radius: 5px !important;
   margin-bottom: 40px;
-
 }
 
 .search-container {
@@ -765,7 +781,7 @@ app-apo-orders .mdc-button {
   margin-bottom: 16px;
   width: 100%;
   flex-direction: row-reverse;
-    padding-left: 10px !important;
+  padding-left: 10px !important;
   margin-bottom: 0 !important;
 }
 
@@ -790,25 +806,24 @@ app-apo-orders .mdc-button {
   width: 24% !important;
   opacity: 1 !important;
   border-radius: 8px !important;
-  border: 1px solid #DCDCDC !important;
-  background-color: #FFFFFF !important;
+  border: 1px solid #dcdcdc !important;
+  background-color: #ffffff !important;
   margin-top: 16px !important;
   flex-wrap: wrap !important;
-  padding: 20px;
+  padding: 15px;
 }
 
 .main-layout-flex.pending {
   width: 66% !important;
   opacity: 1 !important;
   border-radius: 8px !important;
-  border: 1px solid #DCDCDC !important;
-  background-color: #FFFFFF !important;
+  border: 1px solid #dcdcdc !important;
+  background-color: #ffffff !important;
   margin-top: 16px !important;
   margin-left: 10px;
   flex-wrap: wrap !important;
   padding: 26px;
 }
-
 
 .new-request-header-title {
   width: 172px !important;
@@ -836,7 +851,7 @@ app-apo-orders .mdc-button {
   font-size: 13px !important;
   line-height: 22px !important;
   letter-spacing: 0% !important;
-  color: #4B5563 !important;
+  color: #4b5563 !important;
 }
 
 .mat-input-text {
@@ -852,7 +867,7 @@ app-apo-orders .mdc-button {
 }
 
 .mat-input-text-font {
-  border: 1px solid #DCDCDC !important;
+  border: 1px solid #dcdcdc !important;
   font-family: Roboto !important;
   font-weight: 400 !important;
   font-style: Regular !important;
@@ -863,7 +878,7 @@ app-apo-orders .mdc-button {
 }
 
 .mat-input-text.background-color {
-  background-color: #F5F5F5 !important;
+  background-color: #f5f5f5 !important;
 }
 
 .table-container {
@@ -910,7 +925,7 @@ app-apo-orders .mdc-button {
   border-radius: 4px !important;
   background-color: #e87b31 !important;
   border-color: #e87b31 !important;
-  color: #FFFFFF !important;
+  color: #ffffff !important;
   font-size: 18px !important;
 }
 
@@ -954,53 +969,52 @@ app-apo-orders .mdc-button {
 }
 
 .status-button.draft-button {
-  background-color: #3333330D !important;
+  background-color: #3333330d !important;
   color: #333333 !important;
   border: 1px solid #333333 !important;
 }
 
 .status-button.rejected-button {
-  background-color: #F443361A !important;
-  color: #E22D20 !important;
+  background-color: #f443361a !important;
+  color: #e22d20 !important;
   border: 1px solid #333333 !important;
 }
 
 .status-button.submitted-button {
-  background-color: #6E3FF31A !important;
-  color: #5A36BF !important;
-  border: 1px solid #5A36BF !important;
+  background-color: #6e3ff31a !important;
+  color: #5a36bf !important;
+  border: 1px solid #5a36bf !important;
 }
 
 .status-button.pending-button {
-  background-color: #FFA5001A !important;
-  color: #E27C00 !important;
-  border: 1px solid #E27C00 !important;
+  background-color: #ffa5001a !important;
+  color: #e27c00 !important;
+  border: 1px solid #e27c00 !important;
 }
 
 .status-button.approved-button {
-  background-color: #009B001A !important;
+  background-color: #009b001a !important;
   color: #008200 !important;
   border: 1px solid #008200 !important;
 }
 
 .status-button.returned-button {
-  background-color: #35B9E91A !important;
-  color: #1F87AD !important;
-  border: 1px solid #1F87AD !important;
+  background-color: #35b9e91a !important;
+  color: #1f87ad !important;
+  border: 1px solid #1f87ad !important;
 }
 
 .status-button.consult-button {
-  background-color: #EA781A1A !important;
-  color: #C46315 !important;
-  border: 1px solid #C46315 !important;
+  background-color: #ea781a1a !important;
+  color: #c46315 !important;
+  border: 1px solid #c46315 !important;
 }
 
 .status-button.responeded-button {
-  background-color: #E255F21A !important;
-  color: #9C23A9 !important;
-  border: 1px solid #9C23A9 !important;
+  background-color: #e255f21a !important;
+  color: #9c23a9 !important;
+  border: 1px solid #9c23a9 !important;
 }
-
 
 .logo {
   width: auto;
@@ -1046,14 +1060,14 @@ app-apo-orders .mdc-button {
   opacity: 1;
   border-width: 1px;
   border: none;
-  border-top: 2px dashed #D1D5DB;
+  border-top: 2px dashed #d1d5db;
   margin-bottom: 16px;
 }
 
 .dotted-line-doc {
   border: none;
   border-top: 1px outset #999;
-  gap: 35px
+  gap: 35px;
 }
 
 .attachment-box-wrapper {
@@ -1145,7 +1159,6 @@ app-apo-orders .mdc-button {
   letter-spacing: 0%;
 }
 
-
 .attachment-view-button-for-history {
   text-align: center;
   opacity: 1;
@@ -1169,8 +1182,8 @@ app-apo-orders .mdc-button {
 }
 
 .audit-tab-mat-button.active {
-  background-color: #EA781A !important;
-  color: #FFFFFF !important;
+  background-color: #ea781a !important;
+  color: #ffffff !important;
 }
 
 .audit-attachment-user-details {
@@ -1179,7 +1192,7 @@ app-apo-orders .mdc-button {
   padding-right: 12px !important;
   padding-bottom: 8px !important;
   padding-left: 2px !important;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .audit-attachment-type-title {
@@ -1198,14 +1211,14 @@ app-apo-orders .mdc-button {
   border-radius: 12px !important;
   border-width: 1px !important;
   padding: 8px 10px !important;
-  background-color: #F6F6F6;
-  border: 1px solid #DCDCDC;
-  margin-bottom: 8px !important;
+  background-color: #f6f6f6;
+  border: 1px solid #dcdcdc;
+  /* margin-bottom: 8px !important; */
 }
 
 .audit-attachment-content .main-layout-flex span.mdc-button__label img {
   height: auto !important;
-  width: auto !important
+  width: auto !important;
 }
 
 .audit-attachment-name {
@@ -1217,7 +1230,7 @@ app-apo-orders .mdc-button {
   letter-spacing: 0% !important;
   color: #333333;
   margin-right: 0px;
-  width: 100% !important;
+  /* width: 100% !important; */
 }
 
 .audit-attachment-date {
@@ -1238,7 +1251,7 @@ app-apo-orders .mdc-button {
   font-size: 12px !important;
   line-height: 20px !important;
   letter-spacing: 0% !important;
-  color: #5C5C5C !important;
+  color: #5c5c5c !important;
   flex: 1 1 auto !important;
   /* take remaining space */
   min-width: 0 !important;
@@ -1246,8 +1259,6 @@ app-apo-orders .mdc-button {
   white-space: normal !important;
   word-break: break-word !important;
   overflow-wrap: anywhere !important;
-
-
 }
 
 .audit-history-name {
@@ -1268,7 +1279,7 @@ app-apo-orders .mdc-button {
   font-size: 11px !important;
   line-height: 22px !important;
   letter-spacing: 0% !important;
-  color: #333333 !important
+  color: #333333 !important;
 }
 
 .audit-history-department.initiator {
@@ -1314,7 +1325,7 @@ app-apo-orders .mdc-button {
   font-size: 11px;
   line-height: 22px;
   letter-spacing: 0%;
-  color: #333333 !important
+  color: #333333 !important;
 }
 
 .audit-history-description {
@@ -1324,19 +1335,18 @@ app-apo-orders .mdc-button {
   font-size: 11px;
   line-height: 20px;
   letter-spacing: 0%;
-  color: #5C5C5C !important
+  color: #5c5c5c !important;
 }
 
 .audit-history-attachment-button-layout {
   opacity: 1;
   padding: 10px 0 !important;
   border-bottom-width: 1px !important;
-  background-color: #FFFFFF !important;
-  border-bottom: 1px solid #D1D5DB !important;
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #d1d5db !important;
   display: flex !important;
   gap: 8px !important;
 }
-
 
 .audit-history-attachment-button {
   gap: 10px !important;
@@ -1345,8 +1355,8 @@ app-apo-orders .mdc-button {
   border-radius: 6px !important;
   padding-right: 16px !important;
   padding-left: 16px !important;
-  border: 1px solid #DCDCDC !important;
-  background-color: #FFFFFF !important;
+  border: 1px solid #dcdcdc !important;
+  background-color: #ffffff !important;
   color: #333333 !important;
   font-family: Roboto !important;
   font-weight: 400 !important;
@@ -1359,9 +1369,9 @@ app-apo-orders .mdc-button {
 }
 
 .audit-history-attachment-button.active {
-  border: 0px solid #EA781A !important;
-  color: #FFFFFF !important;
-  background-color: #EA781A !important;
+  border: 0px solid #ea781a !important;
+  color: #ffffff !important;
+  background-color: #ea781a !important;
 }
 
 .show-attachment-layout {
@@ -1370,7 +1380,7 @@ app-apo-orders .mdc-button {
   margin-left: 10px;
   margin-bottom: 10px;
   border-radius: 8px !important;
-  border: 1px solid #DCDCDC !important;
+  border: 1px solid #dcdcdc !important;
 }
 
 .mdc-data-table__cell,

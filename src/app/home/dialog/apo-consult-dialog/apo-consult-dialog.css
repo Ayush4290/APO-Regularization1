@@ -132,6 +132,20 @@
   cursor: pointer !important;
 }
 
+
+.filters-icon {
+  color: #ea781a !important;
+  font-size: 18px !important;
+  margin-left: 10px !important;
+  margin-top: 8px !important;
+  margin-bottom: 0 !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important; 
+  width: 40px !important;
+  height: 18px !important;
+  transition: color 0.2s ease !important;
+}
+
 /* Search icon (right, gray) */
 ::ng-deep .mat-select-panel .search-icon {
   position: absolute !important;
@@ -142,3 +156,4 @@
   color: #666 !important;
   pointer-events: none !important;
 }
+

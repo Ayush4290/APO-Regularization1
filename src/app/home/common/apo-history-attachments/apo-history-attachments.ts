@@ -79,7 +79,7 @@ export class ApoHistoryAttachments implements OnChanges, OnInit {
     }
   }
 
-  setAuditHistory(auditHistory: any[]) {
+ setAuditHistory(auditHistory: any[]) {
     this.auditHistoryList = [];
     auditHistory?.forEach((audit: any) => {
       if (audit?.changedBy) {
@@ -97,7 +97,105 @@ export class ApoHistoryAttachments implements OnChanges, OnInit {
           comment: audit?.comment
         });
       } else if (audit?.changedBy == null) {
-        // ... (rest of your logic for handling null changedBy remains unchanged)
+        if (this.roleId == EnumRole.INITIATOR) {
+          if (audit?.status == EnumStatus.PENDING) { 
+            if (audit?.roleId && audit?.deptId == null) {
+              let usersList = this.originalUserList.filter((user: any) => user.role == audit.roleId);
+              usersList.forEach((user: any) => {
+                this.auditHistoryList.push({
+                  empId: user?.empId,
+                  empName: user?.empName,
+                  dept: this.getDeptName(user?.dept),
+                  role: this.getRoleName(audit?.roleId),
+                  fileIds: audit?.fileIds,
+                  date: this.datePipe.transform(audit?.changedDt, constants.dtFormat),
+                  time: this.datePipe.transform(audit?.changedDt, constants.timeFormat),
+                  aging: audit?.aging,
+                  status: audit?.status,
+                  statusName: audit?.statusName,
+                  comment: audit?.comment
+                });
+              })
+            } else if (audit?.roleId == null && audit?.deptId) { 
+              let changedByIds = this.auditHistory.filter((x: any) => x.changedBy != null).map((x: any) => x.changedBy?.empId);
+              let usersList = this.originalUserList.filter((user: any) => user.dept == audit?.deptId && user?.role == EnumRole.CONSULT && !changedByIds.includes(user.empId));
+              usersList.forEach((user: any) => {
+                this.auditHistoryList.push({
+                  empId: user?.empId,
+                  empName: user?.empName,
+                  dept: this.getDeptName(user?.dept),
+                  role: this.getRoleName(user?.role),
+                  fileIds: audit?.fileIds,
+                  date: this.datePipe.transform(audit?.changedDt, constants.dtFormat),
+                  time: this.datePipe.transform(audit?.changedDt, constants.timeFormat),
+                  aging: audit?.aging,
+                  status: audit?.status,
+                  statusName: audit?.statusName,
+                  comment: audit?.comment
+                });
+              })
+            }
+          }
+        }
+        if (this.roleId == EnumRole.REVIEWER || this.roleId == EnumRole.APPROVER) {
+          if (audit?.status == EnumStatus.PENDING) {
+            if (audit?.roleId && audit?.deptId == null) { // For self reviewer show case
+              let usersList = this.originalUserList.filter((user: any) => user.empId == this.userId);
+              usersList.forEach((user: any) => {
+                this.auditHistoryList.push({
+                  empId: user?.empId,
+                  empName: user?.empName,
+                  dept: this.getDeptName(user?.dept),
+                  role: this.getRoleName(audit?.roleId),
+                  fileIds: audit?.fileIds,
+                  date: this.datePipe.transform(audit?.changedDt, constants.dtFormat),
+                  time: this.datePipe.transform(audit?.changedDt, constants.timeFormat),
+                  aging: audit?.aging,
+                  status: audit?.status,
+                  statusName: audit?.statusName,
+                  comment: audit?.comment
+                });
+              })
+            } else if (audit?.roleId == null && audit?.deptId) { // For self reviewer show case
+              let usersList = this.originalUserList.filter((user: any) => user.dept == audit?.deptId && user.empId != this.userId && user?.role == EnumRole.CONSULT);
+              usersList.forEach((user: any) => {
+                this.auditHistoryList.push({
+                  empId: user?.empId,
+                  empName: user?.empName,
+                  dept: this.getDeptName(user?.dept),
+                  role: this.getRoleName(user?.role),
+                  fileIds: audit?.fileIds,
+                  date: this.datePipe.transform(audit?.changedDt, constants.dtFormat),
+                  time: this.datePipe.transform(audit?.changedDt, constants.timeFormat),
+                  aging: audit?.aging,
+                  status: audit?.status,
+                  statusName: audit?.statusName,
+                  comment: audit?.comment
+                });
+              })
+            }
+          }
+        }
+        if (this.roleId == EnumRole.CONSULT) {
+          if (audit?.status == EnumStatus.PENDING) {
+            let usersList = this.originalUserList.filter((user: any) => user.empId == this.userId);
+            usersList.forEach((user: any) => {
+              this.auditHistoryList.push({
+                empId: user?.empId,
+                empName: user?.empName,
+                dept: this.getDeptName(user?.dept),
+                role: this.getRoleName(user?.role),
+                fileIds: audit?.fileIds,
+                date: this.datePipe.transform(audit?.changedDt, constants.dtFormat),
+                time: this.datePipe.transform(audit?.changedDt, constants.timeFormat),
+                aging: audit?.aging,
+                status: audit?.status,
+                statusName: audit?.statusName,
+                comment: audit?.comment
+              });
+            })
+          }
+        }
       }
     });
 
